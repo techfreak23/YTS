@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "InitialViewController.h"
 
+@protocol CollectionViewCellDelegate <NSObject>
+
+- (void)didSelectItem:(NSIndexPath *)indexPath;
+
+@end
+
 @interface CollectionViewTableViewCell : UITableViewCell <UpcomingListDelegate>
 
+@property (nonatomic, weak) id <CollectionViewCellDelegate> delegate;
 @property (nonatomic, strong) NSArray *upcomingMovies;
 
 @end

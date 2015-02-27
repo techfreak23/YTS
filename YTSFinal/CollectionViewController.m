@@ -52,8 +52,8 @@ int page = 1;
 {
     [super viewDidLoad];
     
-    CGRect navFrame = self.navigationController.navigationBar.frame;
-    CGRect statFrame = [[UIApplication sharedApplication] statusBarFrame];
+    //CGRect navFrame = self.navigationController.navigationBar.frame;
+    //CGRect statFrame = [[UIApplication sharedApplication] statusBarFrame];
     
     self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0f, self.view.center.y- 50.0f, 100.0f, 100.0f)];
     self.indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
@@ -88,7 +88,6 @@ int page = 1;
     NSArray *temp = [NSArray arrayWithArray:(NSArray *)[notification object]];
     
     if (!self.movieItems) {
-        NSLog(@"Movie items don't exist yet...");
         self.movieItems = [temp mutableCopy];
         [self.collectionView reloadData];
     } else {
@@ -171,8 +170,6 @@ int page = 1;
     
     if (indexPath.item == self.movieItems.count) {
         NSLog(@"This is the final movie ");
-        //[self.indicatorView startAnimating];
-        //[[YTSManager sharedManager] browseMovieListWithLimit:@"25" page:++page];
     } else {
         DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         
@@ -201,7 +198,6 @@ int page = 1;
     [tempView stopAnimating];
     
     if (indexPath.item == self.movieItems.count) {
-        //[self.indicatorView startAnimating];
         [[YTSManager sharedManager] browseMovieListWithLimit:@"25" page:++page];
     }
 }

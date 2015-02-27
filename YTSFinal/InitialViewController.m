@@ -14,14 +14,14 @@
 #import "MoviePosterCollectionViewCell.h"
 #import "ListViewCell.h"
 
-@interface InitialViewController () <UIAlertViewDelegate>
+@interface InitialViewController () <UIAlertViewDelegate, CollectionViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *upcomingList;
 @property (nonatomic, strong) UIActivityIndicatorView *indicationView;
 
 @end
 
-static NSString *reuseIdentifier = @"Cell";
+static NSString *reuseIdentifier = @"listCell";
 static NSString *collectionIdentifier = @"collectionCell";
 
 @implementation InitialViewController
@@ -68,6 +68,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 {
     self.upcomingList = [[notification object] mutableCopy];
     NSLog(@"Just checking to be sure: %@", self.upcomingList);
+    [self.indicationView stopAnimating];
     [self.delegate finishedWithUpcomingList:self.upcomingList];
 }
 
@@ -88,48 +89,43 @@ static NSString *collectionIdentifier = @"collectionCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell;
-    
     if (indexPath.row == 0) {
         CollectionViewTableViewCell *upcomingCell = [tableView dequeueReusableCellWithIdentifier:collectionIdentifier forIndexPath:indexPath];
-        upcomingCell = [[CollectionViewTableViewCell alloc] init];
-        self.indicationView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(upcomingCell.contentView.center.x - 20.0f, cell.contentView.center.y - 20.0f, 40.0f, 40.0f)];
+        if (!upcomingCell) {
+            upcomingCell = [[CollectionViewTableViewCell alloc] init];
+        }
+        
+        self.indicationView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(upcomingCell.contentView.center.x - 20.0f, upcomingCell.contentView.center.y - 20.0f, 40.0f, 40.0f)];
         self.indicationView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         [self.indicationView startAnimating];
         upcomingCell.upcomingMovies = self.upcomingList;
         self.delegate = upcomingCell;
-        cell = upcomingCell;
+        upcomingCell.delegate = self;
+        upcomingCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        upcomingCell.backgroundColor = [UIColor clearColor];
         
-        [cell.contentView addSubview:self.indicationView];
-    } else {
-        ListViewCell *listCell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        listCell = [[ListViewCell alloc] init];
+        [upcomingCell.contentView addSubview:self.indicationView];
+        return upcomingCell;
+        
+    } else if (indexPath.row == 1) {
+        ListViewCell *listCell = (ListViewCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        if (!listCell) {
+            listCell = [[ListViewCell alloc] init];
+        }
+        
         listCell.label.text = @"Browse movies";
         listCell.label.layer.shadowColor = [UIColor blackColor].CGColor;
         listCell.label.layer.shadowRadius = 10.0;
         listCell.label.layer.shadowOpacity = .80;
         listCell.label.layer.cornerRadius = 10.0;
         listCell.label.layer.masksToBounds = YES;
-        cell = listCell;
+        
+        listCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return listCell;
     }
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    /*
-    ListViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    
-    cell.label.text = [self.items objectAtIndex:indexPath.row];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    
-    cell.label.layer.shadowColor = [UIColor blackColor].CGColor;
-    cell.label.layer.shadowRadius = 10.0;
-    cell.label.layer.shadowOpacity = .80;
-    cell.label.layer.cornerRadius = 10.0;
-    cell.label.layer.masksToBounds = YES;
-     */
-    
-    return cell;
+    return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -155,9 +151,20 @@ static NSString *collectionIdentifier = @"collectionCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CollectionViewController *controller = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
-    
-    [self.navigationController pushViewController:controller animated:YES];
+    if (indexPath.row == 1) {
+        CollectionViewController *controller = [[CollectionViewController alloc] initWithNibName:@"CollectionViewController" bundle:nil];
+        
+        [self.navigationController pushViewController:controller animated:YES];
+    }
+}
+
+#pragma mark - collection table view cell delegate method
+
+- (void)didSelectItem:(NSIndexPath *)indexPath
+{
+    NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
+    NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb://title/%@", [temp objectForKey:@"imdb_code"]]]];
 }
 
 
