@@ -1,15 +1,15 @@
 //
 //  DetailViewController.h
-//  CollectionViewTest
+//  YTSFinal
 //
-//  Created by Art Sevilla on 11/21/14.
-//  Copyright (c) 2014 Art Sevilla. All rights reserved.
+//  Created by Art Sevilla on 3/2/15.
+//  Copyright (c) 2015 Art Sevilla. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UITableViewController
 
-@property (nonatomic, strong) IBOutlet UIImageView *imageView;
+- (void)fetchDetailsForMovieID:(NSString *)movieID;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "AccountViewController.h"
+#import "YTSManager.h"
 #import "SignUpViewController.h"
 #import "LoginViewController.h"
 #import "ListViewCell.h"
@@ -17,9 +18,9 @@
 
 @end
 
-BOOL isLoggedIn = NO;
+BOOL isLoggedIn;
 
-static NSString *reuseIdentifier = @"Cell";
+static NSString *reuseIdentifier = @"listCell";
 
 @implementation AccountViewController
 
@@ -27,18 +28,18 @@ static NSString *reuseIdentifier = @"Cell";
 {
     [super viewDidLoad];
     
+    isLoggedIn = [[YTSManager sharedManager] isLoggedIn];
+    
     if (isLoggedIn) {
-        _accountItems = @[@"View Profile", @"Change Password", @"Logout"];
+        self.accountItems = @[@"View Profile", @"Change Password", @"Logout"];
     } else {
-        _accountItems = @[@"Log in", @"Sign up"];
+        self.accountItems = @[@"Log in", @"Sign up"];
     }
     
     self.title = @"Account";
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    
-    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(dismissView)];
-    self.navigationItem.rightBarButtonItem = closeButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismissView)];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     [self.tableView registerNib:[UINib nibWithNibName:@"ListViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
@@ -66,7 +67,7 @@ static NSString *reuseIdentifier = @"Cell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _accountItems.count;
+    return self.accountItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,6 +86,18 @@ static NSString *reuseIdentifier = @"Cell";
     
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66.0f;
+}
+
+#pragma mark - table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

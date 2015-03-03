@@ -16,8 +16,6 @@
 		046DE20A1AA01A9C0097BAB0 /* CollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2021AA01A9C0097BAB0 /* CollectionViewController.xib */; };
 		046DE20B1AA01A9C0097BAB0 /* CollectionViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2041AA01A9C0097BAB0 /* CollectionViewTableViewCell.m */; };
 		046DE20C1AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2051AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib */; };
-		046DE20D1AA01A9C0097BAB0 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2071AA01A9C0097BAB0 /* DetailViewController.m */; };
-		046DE20E1AA01A9C0097BAB0 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2081AA01A9C0097BAB0 /* DetailViewController.xib */; };
 		046DE2241AA01AFB0097BAB0 /* InitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2101AA01AFB0097BAB0 /* InitialViewController.m */; };
 		046DE2251AA01AFB0097BAB0 /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2111AA01AFB0097BAB0 /* InitialViewController.xib */; };
 		046DE2261AA01AFB0097BAB0 /* ListViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2131AA01AFB0097BAB0 /* ListViewCell.m */; };
@@ -37,6 +35,13 @@
 		046DE2381AA01B110097BAB0 /* YTSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2361AA01B110097BAB0 /* YTSManager.m */; };
 		046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE23F1AA032A40097BAB0 /* AccountViewController.m */; };
 		046DE2421AA032A40097BAB0 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2401AA032A40097BAB0 /* AccountViewController.xib */; };
+		04E0F31C1AA54BB2002F51D7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */; };
+		04E0F31D1AA54BB2002F51D7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */; };
+		04E0F3211AA56542002F51D7 /* user-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F31E1AA56542002F51D7 /* user-icon@3x.png */; };
+		04E0F3221AA56542002F51D7 /* user-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F31F1AA56542002F51D7 /* user-icon@2x.png */; };
+		04E0F3231AA56542002F51D7 /* user-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F3201AA56542002F51D7 /* user-icon.png */; };
+		04E0F3271AA57C43002F51D7 /* MultiLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0F3251AA57C43002F51D7 /* MultiLabelTableViewCell.m */; };
+		04E0F3281AA57C43002F51D7 /* MultiLabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F3261AA57C43002F51D7 /* MultiLabelTableViewCell.xib */; };
 		2E790C943EA791F201A0106F /* libPods-YTSFinal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9035DA3717560C4118E710 /* libPods-YTSFinal.a */; };
 /* End PBXBuildFile section */
 
@@ -67,9 +72,6 @@
 		046DE2031AA01A9C0097BAB0 /* CollectionViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewTableViewCell.h; sourceTree = "<group>"; };
 		046DE2041AA01A9C0097BAB0 /* CollectionViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewTableViewCell.m; sourceTree = "<group>"; };
 		046DE2051AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewTableViewCell.xib; sourceTree = "<group>"; };
-		046DE2061AA01A9C0097BAB0 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		046DE2071AA01A9C0097BAB0 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		046DE2081AA01A9C0097BAB0 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		046DE20F1AA01AFB0097BAB0 /* InitialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InitialViewController.h; sourceTree = "<group>"; };
 		046DE2101AA01AFB0097BAB0 /* InitialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InitialViewController.m; sourceTree = "<group>"; };
 		046DE2111AA01AFB0097BAB0 /* InitialViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
@@ -98,6 +100,15 @@
 		046DE23E1AA032A40097BAB0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		046DE23F1AA032A40097BAB0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		046DE2401AA032A40097BAB0 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		04E0F3191AA54BB2002F51D7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		04E0F31E1AA56542002F51D7 /* user-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon@3x.png"; sourceTree = "<group>"; };
+		04E0F31F1AA56542002F51D7 /* user-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon@2x.png"; sourceTree = "<group>"; };
+		04E0F3201AA56542002F51D7 /* user-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "user-icon.png"; sourceTree = "<group>"; };
+		04E0F3241AA57C43002F51D7 /* MultiLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiLabelTableViewCell.h; sourceTree = "<group>"; };
+		04E0F3251AA57C43002F51D7 /* MultiLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultiLabelTableViewCell.m; sourceTree = "<group>"; };
+		04E0F3261AA57C43002F51D7 /* MultiLabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MultiLabelTableViewCell.xib; sourceTree = "<group>"; };
 		1F934169E2C2F87B633AE686 /* Pods-YTSFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YTSFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YTSFinal/Pods-YTSFinal.debug.xcconfig"; sourceTree = "<group>"; };
 		2B3D7BFF263B1CD571641F49 /* Pods-YTSFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YTSFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-YTSFinal/Pods-YTSFinal.release.xcconfig"; sourceTree = "<group>"; };
 		DF9035DA3717560C4118E710 /* libPods-YTSFinal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTSFinal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +156,9 @@
 		046DE1D61AA01A4E0097BAB0 /* YTSFinal */ = {
 			isa = PBXGroup;
 			children = (
+				04E0F31E1AA56542002F51D7 /* user-icon@3x.png */,
+				04E0F31F1AA56542002F51D7 /* user-icon@2x.png */,
+				04E0F3201AA56542002F51D7 /* user-icon.png */,
 				046DE2391AA01B160097BAB0 /* YTS Manager */,
 				046DE1FD1AA01A8D0097BAB0 /* AppDelegate.h */,
 				046DE1FE1AA01A8D0097BAB0 /* AppDelegate.m */,
@@ -158,12 +172,15 @@
 				046DE2031AA01A9C0097BAB0 /* CollectionViewTableViewCell.h */,
 				046DE2041AA01A9C0097BAB0 /* CollectionViewTableViewCell.m */,
 				046DE2051AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib */,
-				046DE2061AA01A9C0097BAB0 /* DetailViewController.h */,
-				046DE2071AA01A9C0097BAB0 /* DetailViewController.m */,
-				046DE2081AA01A9C0097BAB0 /* DetailViewController.xib */,
+				04E0F3191AA54BB2002F51D7 /* DetailViewController.h */,
+				04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */,
+				04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */,
 				046DE2121AA01AFB0097BAB0 /* ListViewCell.h */,
 				046DE2131AA01AFB0097BAB0 /* ListViewCell.m */,
 				046DE2141AA01AFB0097BAB0 /* ListViewCell.xib */,
+				04E0F3241AA57C43002F51D7 /* MultiLabelTableViewCell.h */,
+				04E0F3251AA57C43002F51D7 /* MultiLabelTableViewCell.m */,
+				04E0F3261AA57C43002F51D7 /* MultiLabelTableViewCell.xib */,
 				046DE23E1AA032A40097BAB0 /* AccountViewController.h */,
 				046DE23F1AA032A40097BAB0 /* AccountViewController.m */,
 				046DE2401AA032A40097BAB0 /* AccountViewController.xib */,
@@ -217,10 +234,10 @@
 		046DE2391AA01B160097BAB0 /* YTS Manager */ = {
 			isa = PBXGroup;
 			children = (
-				046DE2331AA01B110097BAB0 /* YIFYMovie.h */,
-				046DE2341AA01B110097BAB0 /* YIFYMovie.m */,
 				046DE2351AA01B110097BAB0 /* YTSManager.h */,
 				046DE2361AA01B110097BAB0 /* YTSManager.m */,
+				046DE2331AA01B110097BAB0 /* YIFYMovie.h */,
+				046DE2341AA01B110097BAB0 /* YIFYMovie.m */,
 			);
 			name = "YTS Manager";
 			sourceTree = "<group>";
@@ -327,18 +344,22 @@
 				046DE2291AA01AFB0097BAB0 /* LoginViewController.xib in Resources */,
 				046DE22E1AA01AFB0097BAB0 /* purple_background@3x.png in Resources */,
 				046DE22C1AA01AFB0097BAB0 /* purple_background.png in Resources */,
+				04E0F3221AA56542002F51D7 /* user-icon@2x.png in Resources */,
+				04E0F3211AA56542002F51D7 /* user-icon@3x.png in Resources */,
 				046DE2301AA01AFB0097BAB0 /* SignUpViewController.xib in Resources */,
 				046DE2421AA032A40097BAB0 /* AccountViewController.xib in Resources */,
 				046DE20A1AA01A9C0097BAB0 /* CollectionViewController.xib in Resources */,
 				046DE2271AA01AFB0097BAB0 /* ListViewCell.xib in Resources */,
+				04E0F31D1AA54BB2002F51D7 /* DetailViewController.xib in Resources */,
 				046DE1E81AA01A4E0097BAB0 /* LaunchScreen.xib in Resources */,
-				046DE20E1AA01A9C0097BAB0 /* DetailViewController.xib in Resources */,
 				046DE22D1AA01AFB0097BAB0 /* purple_background@2x.png in Resources */,
 				046DE22B1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.xib in Resources */,
 				046DE20C1AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib in Resources */,
 				046DE2321AA01AFB0097BAB0 /* TextFieldTableViewCell.xib in Resources */,
 				046DE1E51AA01A4E0097BAB0 /* Images.xcassets in Resources */,
+				04E0F3281AA57C43002F51D7 /* MultiLabelTableViewCell.xib in Resources */,
 				046DE2251AA01AFB0097BAB0 /* InitialViewController.xib in Resources */,
+				04E0F3231AA56542002F51D7 /* user-icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,12 +411,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				046DE2281AA01AFB0097BAB0 /* LoginViewController.m in Sources */,
-				046DE20D1AA01A9C0097BAB0 /* DetailViewController.m in Sources */,
 				046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */,
 				046DE22A1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.m in Sources */,
 				046DE1FF1AA01A8D0097BAB0 /* AppDelegate.m in Sources */,
 				046DE1DA1AA01A4E0097BAB0 /* main.m in Sources */,
 				046DE2241AA01AFB0097BAB0 /* InitialViewController.m in Sources */,
+				04E0F3271AA57C43002F51D7 /* MultiLabelTableViewCell.m in Sources */,
 				046DE2311AA01AFB0097BAB0 /* TextFieldTableViewCell.m in Sources */,
 				046DE2371AA01B110097BAB0 /* YIFYMovie.m in Sources */,
 				046DE22F1AA01AFB0097BAB0 /* SignUpViewController.m in Sources */,
@@ -403,6 +424,7 @@
 				046DE2381AA01B110097BAB0 /* YTSManager.m in Sources */,
 				046DE2091AA01A9C0097BAB0 /* CollectionViewController.m in Sources */,
 				046DE2261AA01AFB0097BAB0 /* ListViewCell.m in Sources */,
+				04E0F31C1AA54BB2002F51D7 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

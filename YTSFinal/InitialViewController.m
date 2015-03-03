@@ -36,8 +36,7 @@ static NSString *collectionIdentifier = @"collectionCell";
     self.title = @"YTS";
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     
-    UIBarButtonItem *showAccount = [[UIBarButtonItem alloc] initWithTitle:@"Account" style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView)];
-    self.navigationItem.rightBarButtonItem = showAccount;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView)];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CollectionViewTableViewCell" bundle:nil] forCellReuseIdentifier:collectionIdentifier];
@@ -49,6 +48,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedWithUpcomingList:) name:@"finishedWithUpcoming" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(finishedWithError:) name:@"didFinishWithError" object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -67,9 +67,15 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (void)finishedWithUpcomingList:(NSNotification *)notification
 {
     self.upcomingList = [[notification object] mutableCopy];
-    NSLog(@"Just checking to be sure: %@", self.upcomingList);
     [self.indicationView stopAnimating];
     [self.delegate finishedWithUpcomingList:self.upcomingList];
+}
+
+- (void)finishedWithError:(NSNotification *)notification
+{
+    [self.indicationView stopAnimating];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Something went wrong with the request. Please try again later." delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+    [alert show];
 }
 
 #pragma mark - Table view data source
@@ -128,6 +134,16 @@ static NSString *collectionIdentifier = @"collectionCell";
     return nil;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UILabel *headerLabel = [[UILabel alloc] init];
+    headerLabel.font = [UIFont systemFontOfSize:15.0f];
+    headerLabel.textColor = [UIColor greenColor];
+    headerLabel.text = [NSString stringWithFormat:@" Upcoming movies"];
+    
+    return headerLabel;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
@@ -147,6 +163,16 @@ static NSString *collectionIdentifier = @"collectionCell";
     
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    return 30.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 30.0f;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -164,7 +190,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 {
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb://title/%@", [temp objectForKey:@"imdb_code"]]]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@", [temp objectForKey:@"imdb_code"]]]];
 }
 
 

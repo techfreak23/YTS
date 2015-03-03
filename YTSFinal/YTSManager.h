@@ -12,8 +12,10 @@
 
 + (YTSManager *)sharedManager;
 
-- (void)browseMovieListWithLimit:(NSString *)limit page:(NSInteger)page;
-- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
+- (BOOL)isLoggedIn;
 - (void)fetchUpcomingList;
+- (void)browseMovieListWithLimit:(NSString *)limit page:(NSInteger)page;
+- (void)fetchMovieDetailsForID:(NSString *)movieID;
+- (void)loginWithUsername:(NSString *)username password:(NSString *)password;
 
 @end

@@ -103,7 +103,7 @@ static NSString *reuseIdentifier = @"movieCell";
     
     [UIView animateWithDuration:0.25f animations:^{
         cell.layer.opacity = 1.0f;
-        cell.layer.shadowOpacity = .95f;
+        cell.layer.shadowOpacity = .65f;
         cell.layer.shadowRadius = 15.0f;
     }];
 }

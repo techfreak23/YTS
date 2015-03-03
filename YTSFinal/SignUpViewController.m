@@ -75,6 +75,7 @@ static NSString *reuseIdentifier = @"textCell";
             cell.entryField.placeholder = @"email";
             cell.entryField.keyboardType = UIKeyboardTypeEmailAddress;
             cell.entryField.returnKeyType = UIReturnKeyNext;
+            [cell.entryField becomeFirstResponder];
         }
             break;
         
@@ -99,14 +100,24 @@ static NSString *reuseIdentifier = @"textCell";
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForFooterInSection:(NSInteger)section
 {
-    return 20.0;
+    return 30.0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 20.0;
+    return 30.0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -114,7 +125,7 @@ static NSString *reuseIdentifier = @"textCell";
     UILabel *footerLabel = [[UILabel alloc] init];
     
     footerLabel.textColor = [UIColor greenColor];
-    footerLabel.text = @"\tPassword must be at least 7 characters long.";
+    footerLabel.text = @"Password must be at least 7 characters long.";
     footerLabel.font = [UIFont systemFontOfSize:12.0];
     footerLabel.backgroundColor = [UIColor clearColor];
     
@@ -132,15 +143,7 @@ static NSString *reuseIdentifier = @"textCell";
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    switch (textField.tag) {
-        case 0: {
-            [textField resignFirstResponder];
-        }
-            break;
-            
-        default:
-            break;
-    }
+    [textField resignFirstResponder];
     
     return YES;
 }

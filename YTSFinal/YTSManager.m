@@ -23,6 +23,7 @@ typedef void (^RequestCompletion)(id responseItem, NSError *error);
 dispatch_queue_t kBgQueue;
 static NSString *accessToken = @"d0eae475319142a4ad918dc2338527f0";
 NSString *userKey;
+BOOL isLoggedIn = NO;
 
 //default GET parameters
 
@@ -49,6 +50,8 @@ NSString *userKey;
         _operationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:kYTSEndpoint]];
         _operationManager.completionQueue = kBgQueue;
         _operationManager.requestSerializer = [AFJSONRequestSerializer serializerWithWritingOptions:NSJSONWritingPrettyPrinted];
+        [_operationManager.requestSerializer setTimeoutInterval:30.0];
+        [_operationManager.requestSerializer setCachePolicy:NSURLRequestReturnCacheDataElseLoad];
     }
     
     return self;
@@ -61,7 +64,6 @@ NSString *userKey;
     dispatch_async(kBgQueue, ^{
         self.operationManager.responseSerializer = [AFJSONResponseSerializer serializerWithReadingOptions:NSJSONReadingAllowFragments];
         [self.operationManager GET:baseURL parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            //NSLog(@"Did finish GET with object: %@", responseObject);
             handler(responseObject, nil);
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Did finish GET with error: %@", error.description);
@@ -102,8 +104,10 @@ NSString *userKey;
     [self sendPOSTForBaseURL:baseUrl parameters:parameters completion:^(id responseItem, NSError *error) {
         if (!error) {
             NSLog(@"Login was successful: %@", responseItem);
+            isLoggedIn = YES;
         } else {
             NSLog(@"There was an error logging in...");
+            [self postErrorNotification];
         }
     }];
 }
@@ -129,9 +133,11 @@ NSString *userKey;
                 
             } else {
                 NSLog(@"The status is NOT okay");
+                [self postErrorNotification];
             }
         } else {
             NSLog(@"Browsing movies is not going well...");
+            [self postErrorNotification];
         }
     }];
 }
@@ -149,8 +155,39 @@ NSString *userKey;
             });
         } else {
             NSLog(@"There was an error fetching the upcoming list...");
+            [self postErrorNotification];
         }
     }];
+}
+
+- (void)fetchMovieDetailsForID:(NSString *)movieID
+{
+    NSString *baseURL = @"movie_details.json";
+    NSDictionary *parameters = @{@"movie_id":movieID, @"with_images": @"true", @"with_cast": @"true"};
+    
+    [self sendGETForBaseURL:baseURL parameters:parameters completion:^(id responseItem, NSError *error) {
+        if (!error) {
+            NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)responseItem];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishWithMovieDetails" object:[temp objectForKey:@"data"]];
+            });
+            
+        } else {
+            [self postErrorNotification];
+        }
+    }];
+}
+
+- (void)postErrorNotification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishWithError" object:nil];
+    });
+}
+
+- (BOOL)isLoggedIn
+{
+    return isLoggedIn;
 }
 
 @end

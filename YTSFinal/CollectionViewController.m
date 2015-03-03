@@ -61,16 +61,14 @@ int page = 1;
     [self.view addSubview:self.indicatorView];
     [self.indicatorView startAnimating];
     
-    [[YTSManager sharedManager] browseMovieListWithLimit:@"25" page:page];
+    [[YTSManager sharedManager] browseMovieListWithLimit:@"30" page:page];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishFetchingMovies:) name:@"didFinishFetchingMovieList" object:nil];
     
     self.title = @"Browse";
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
-    UIBarButtonItem *accountButton = [[UIBarButtonItem alloc] initWithTitle:@"Account" style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
-    
-    self.navigationItem.rightBarButtonItem = accountButton;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
     
     self.collectionView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
@@ -112,7 +110,6 @@ int page = 1;
 {
     AccountViewController *controller = [[AccountViewController alloc] initWithNibName:@"AccountViewController" bundle:nil];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:controller];
-    
     [self.navigationController presentViewController:navController animated:YES completion:nil];
 }
 
@@ -171,10 +168,12 @@ int page = 1;
     if (indexPath.item == self.movieItems.count) {
         NSLog(@"This is the final movie ");
     } else {
+        NSDictionary *temp = [self.movieItems objectAtIndex:indexPath.item];
+        
         DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         
-        controller.title = [[self.movieItems objectAtIndex:indexPath.item] objectForKey:@"title_long"];
-        controller.view.backgroundColor = [UIColor grayColor];
+        controller.title = [temp objectForKey:@"title_long"];
+        [controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
         
         [self.navigationController pushViewController:controller animated:YES];
     }
@@ -190,7 +189,7 @@ int page = 1;
     
     [UIView animateWithDuration:0.25f animations:^{
         cell.layer.opacity = 1.0f;
-        cell.layer.shadowOpacity = .95f;
+        cell.layer.shadowOpacity = .65f;
         cell.layer.shadowRadius = 15.0f;
     }];
     
@@ -198,37 +197,8 @@ int page = 1;
     [tempView stopAnimating];
     
     if (indexPath.item == self.movieItems.count) {
-        [[YTSManager sharedManager] browseMovieListWithLimit:@"25" page:++page];
+        [[YTSManager sharedManager] browseMovieListWithLimit:@"30" page:++page];
     }
 }
-
-/*
-// Uncomment this method to specify if the specified item should be highlighted during tracking
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldHighlightItemAtIndexPath:(NSIndexPath *)indexPath {
-	return YES;
-}
-*/
-
-/*
-// Uncomment this method to specify if the specified item should be selected
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-*/
-
-/*
-// Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-- (BOOL)collectionView:(UICollectionView *)collectionView shouldShowMenuForItemAtIndexPath:(NSIndexPath *)indexPath {
-	return NO;
-}
-
-- (BOOL)collectionView:(UICollectionView *)collectionView canPerformAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	return NO;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView performAction:(SEL)action forItemAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender {
-	
-}
-*/
 
 @end

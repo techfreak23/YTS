@@ -91,6 +91,16 @@ static NSString *reuseIdentifier = @"textCell";
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66.0f;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 66.0f;
+}
+
 #pragma mark - text field delegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
