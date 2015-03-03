@@ -55,7 +55,7 @@ int page = 1;
     //CGRect navFrame = self.navigationController.navigationBar.frame;
     //CGRect statFrame = [[UIApplication sharedApplication] statusBarFrame];
     
-    self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0f, self.view.center.y- 50.0f, 100.0f, 100.0f)];
+    self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0f, self.view.center.y - 50.0f, 100.0f, 100.0f)];
     self.indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     
     [self.view addSubview:self.indicatorView];

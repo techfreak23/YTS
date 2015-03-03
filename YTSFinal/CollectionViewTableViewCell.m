@@ -45,8 +45,6 @@ static NSString *reuseIdentifier = @"movieCell";
 
 - (void)awakeFromNib
 {
-    // Initialization code
-    
     [self.collectionView registerNib:[UINib nibWithNibName:@"MoviePosterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     self.collectionView.backgroundColor = [UIColor clearColor];
     self.collectionView.delegate = self;
