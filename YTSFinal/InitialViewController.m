@@ -191,38 +191,12 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     NSString *urlString;
-    NSDictionary *temp;
+    NSDictionary *temp = [self.upcomingList objectAtIndex:actionSheet.tag];
     
-    switch (actionSheet.tag) {
-        case 0: {
-            NSLog(@"Action sheet for the first movie");
-            temp = (NSDictionary *)[self.upcomingList objectAtIndex:actionSheet.tag];
-            urlString = [NSString stringWithFormat:@""];
-        }
-            break;
-            
-        case 1: {
-            NSLog(@"Action sheet for the second movie");
-            urlString = @"";
-        }
-            break;
-            
-        case 2: {
-            NSLog(@"Action sheet for the first movie");
-            urlString = @"";
-        }
-            break;
-            
-        case 3: {
-            NSLog(@"Action sheet for the first movie");
-            urlString = @"";
-        }
-            break;
-            
-            
-            
-        default:
-            break;
+    if (buttonIndex == 0) {
+        NSLog(@"We are opening in IMDB: %@", temp);
+    } else {
+        NSLog(@"We are cancelling...");
     }
 }
 
@@ -236,8 +210,6 @@ static NSString *collectionIdentifier = @"collectionCell";
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
     actionSheet.tag = indexPath.item;
     [actionSheet showInView:self.view];
-    
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@", [temp objectForKey:@"imdb_code"]]]];
 }
 
 
