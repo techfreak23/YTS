@@ -14,7 +14,7 @@
 #import "MoviePosterCollectionViewCell.h"
 #import "ListViewCell.h"
 
-@interface InitialViewController () <UIAlertViewDelegate, CollectionViewCellDelegate>
+@interface InitialViewController () <UIAlertViewDelegate, UIActionSheetDelegate, CollectionViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *upcomingList;
 @property (nonatomic, strong) UIActivityIndicatorView *indicationView;
@@ -36,6 +36,7 @@ static NSString *collectionIdentifier = @"collectionCell";
     self.title = @"YTS";
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f]};
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView)];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];
@@ -124,7 +125,7 @@ static NSString *collectionIdentifier = @"collectionCell";
         listCell.label.layer.shadowColor = [UIColor blackColor].CGColor;
         listCell.label.layer.shadowRadius = 10.0;
         listCell.label.layer.shadowOpacity = .80;
-        listCell.label.layer.cornerRadius = 10.0;
+        //listCell.label.layer.cornerRadius = 10.0;
         listCell.label.layer.masksToBounds = YES;
         
         listCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -185,12 +186,56 @@ static NSString *collectionIdentifier = @"collectionCell";
     }
 }
 
+#pragma mark - action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *urlString;
+    NSDictionary *temp;
+    
+    switch (actionSheet.tag) {
+        case 0: {
+            NSLog(@"Action sheet for the first movie");
+            temp = (NSDictionary *)[self.upcomingList objectAtIndex:actionSheet.tag];
+            urlString = [NSString stringWithFormat:@""];
+        }
+            break;
+            
+        case 1: {
+            NSLog(@"Action sheet for the second movie");
+            urlString = @"";
+        }
+            break;
+            
+        case 2: {
+            NSLog(@"Action sheet for the first movie");
+            urlString = @"";
+        }
+            break;
+            
+        case 3: {
+            NSLog(@"Action sheet for the first movie");
+            urlString = @"";
+        }
+            break;
+            
+            
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - collection table view cell delegate method
 
 - (void)didSelectItem:(NSIndexPath *)indexPath
 {
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
+    actionSheet.tag = indexPath.item;
+    [actionSheet showInView:self.view];
     
     //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@", [temp objectForKey:@"imdb_code"]]]];
 }

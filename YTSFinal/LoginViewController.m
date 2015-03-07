@@ -23,7 +23,7 @@ static NSString *reuseIdentifier = @"textCell";
 {
     [super viewDidLoad];
     
-    _loginItems = @[@"email", @"password"];
+    self.loginItems = @[@"email", @"password"];
     
     self.title = @"Login";
     
@@ -37,12 +37,6 @@ static NSString *reuseIdentifier = @"textCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"TextFieldTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)login
 {
     
@@ -52,14 +46,12 @@ static NSString *reuseIdentifier = @"textCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return _loginItems.count;
+    return self.loginItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -68,7 +60,7 @@ static NSString *reuseIdentifier = @"textCell";
     
     cell.entryField.tag = indexPath.row;
     cell.entryField.delegate = self;
-    cell.entryField.placeholder = [_loginItems objectAtIndex:indexPath.row];
+    cell.entryField.placeholder = [self.loginItems objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.backgroundColor = [UIColor clearColor];
     
@@ -93,12 +85,12 @@ static NSString *reuseIdentifier = @"textCell";
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 66.0f;
+    return 44.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 66.0f;
+    return 44.0f;
 }
 
 #pragma mark - text field delegate

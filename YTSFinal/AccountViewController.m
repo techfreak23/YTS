@@ -38,17 +38,13 @@ static NSString *reuseIdentifier = @"listCell";
     
     self.title = @"Account";
     
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f]};
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(dismissView)];
     
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     [self.tableView registerNib:[UINib nibWithNibName:@"ListViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dismissView
@@ -76,12 +72,12 @@ static NSString *reuseIdentifier = @"listCell";
     
     // Configure the cell...
     
-    cell.label.text = [_accountItems objectAtIndex:indexPath.row];
+    cell.label.text = [self.accountItems objectAtIndex:indexPath.row];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.label.layer.shadowColor = [UIColor blackColor].CGColor;
     cell.label.layer.shadowRadius = 10.0;
     cell.label.layer.shadowOpacity = .80;
-    cell.label.layer.cornerRadius = 10.0;
+    //cell.label.layer.cornerRadius = 10.0;
     cell.label.layer.masksToBounds = YES;
     
     return cell;

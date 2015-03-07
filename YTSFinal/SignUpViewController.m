@@ -25,7 +25,7 @@ static NSString *reuseIdentifier = @"textCell";
     
     self.title = @"Sign up";
     
-    _signUpItems = @[@"email", @"password", @"confirm password"];
+    self.signUpItems = @[@"email", @"password", @"confirm password"];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign up" style:UIBarButtonItemStylePlain target:self action:@selector(signUp)];
     self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -34,12 +34,6 @@ static NSString *reuseIdentifier = @"textCell";
     [self.tableView registerNib:[UINib nibWithNibName:@"TextFieldTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)signUp
@@ -58,7 +52,7 @@ static NSString *reuseIdentifier = @"textCell";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return _signUpItems.count;
+    return self.signUpItems.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
