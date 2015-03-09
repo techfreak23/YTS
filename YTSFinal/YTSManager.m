@@ -103,13 +103,26 @@ BOOL isLoggedIn = NO;
     
     [self sendPOSTForBaseURL:baseUrl parameters:parameters completion:^(id responseItem, NSError *error) {
         if (!error) {
-            NSLog(@"Login was successful: %@", responseItem);
-            isLoggedIn = YES;
+            if ([self checkStatus:responseItem]) {
+                NSLog(@"Login was successful: %@", responseItem);
+                isLoggedIn = YES;
+                userKey = [NSString stringWithFormat:@"%@", [[responseItem objectForKey:@"data"] objectForKey:@"user_key"]];
+                NSLog(@"User key: %@", userKey);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"didLoginSuccessfully" object:nil];
+                });
+            }
         } else {
             NSLog(@"There was an error logging in...");
             [self postErrorNotification];
         }
     }];
+}
+
+- (void)logout
+{
+    userKey = nil;
+    isLoggedIn = NO;
 }
 
 - (void)browseMovieListWithLimit:(NSString *)limit page:(NSInteger)page
@@ -183,6 +196,17 @@ BOOL isLoggedIn = NO;
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSNotificationCenter defaultCenter] postNotificationName:@"didFinishWithError" object:nil];
     });
+}
+
+- (BOOL)checkStatus:(id)responseItem
+{
+    NSString *status = [responseItem objectForKey:@"status"];
+    
+    if ([status isEqualToString:@"ok"]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (BOOL)isLoggedIn

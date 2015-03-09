@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,24 +13,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mhx-S6-h4T">
-                        <rect key="frame" x="8" y="7" width="304" height="30"/>
-                        <color key="backgroundColor" red="0.20784313730000001" green="0.79607843140000001" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zBc-P1-kO5">
+                        <rect key="frame" x="8" y="0.0" width="304" height="44"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="mhx-S6-h4T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="2t9-g5-7hf"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mhx-S6-h4T" secondAttribute="bottom" constant="-2" id="AlA-xe-qIH"/>
-                    <constraint firstItem="mhx-S6-h4T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="aqu-6d-1gE"/>
-                    <constraint firstItem="mhx-S6-h4T" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qnf-af-aop"/>
-                </constraints>
+                <color key="backgroundColor" red="0.20784313730000001" green="0.79607843140000001" blue="0.054901960780000002" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="entryField" destination="mhx-S6-h4T" id="ngf-O9-VNu"/>
+                <outlet property="entryField" destination="zBc-P1-kO5" id="3oh-La-ZT5"/>
             </connections>
-            <point key="canvasLocation" x="251" y="343"/>
+            <point key="canvasLocation" x="251" y="339"/>
         </tableViewCell>
     </objects>
 </document>

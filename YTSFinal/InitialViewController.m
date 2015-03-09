@@ -125,7 +125,7 @@ static NSString *collectionIdentifier = @"collectionCell";
         listCell.label.layer.shadowColor = [UIColor blackColor].CGColor;
         listCell.label.layer.shadowRadius = 10.0;
         listCell.label.layer.shadowOpacity = .80;
-        //listCell.label.layer.cornerRadius = 10.0;
+        listCell.label.layer.cornerRadius = 2.0;
         listCell.label.layer.masksToBounds = YES;
         
         listCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -149,7 +149,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 215.0f;
+        return 235.0f;
     } else {
         return 66.0f;
     }
@@ -158,7 +158,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 215.0f;
+        return 235.0f;
     } else {
        return 66.0;
     }
@@ -186,20 +186,6 @@ static NSString *collectionIdentifier = @"collectionCell";
     }
 }
 
-#pragma mark - action sheet delegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *urlString;
-    NSDictionary *temp = [self.upcomingList objectAtIndex:actionSheet.tag];
-    
-    if (buttonIndex == 0) {
-        NSLog(@"We are opening in IMDB: %@", temp);
-    } else {
-        NSLog(@"We are cancelling...");
-    }
-}
-
 #pragma mark - collection table view cell delegate method
 
 - (void)didSelectItem:(NSIndexPath *)indexPath
@@ -207,10 +193,29 @@ static NSString *collectionIdentifier = @"collectionCell";
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
     actionSheet.tag = indexPath.item;
     [actionSheet showInView:self.view];
 }
 
+#pragma mark - action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSDictionary *temp = [self.upcomingList objectAtIndex:actionSheet.tag];
+    NSString *urlString = [temp objectForKey:@"imdb_code"];
+    
+    if (buttonIndex == 0) {
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", urlString]]]) {
+            NSLog(@"We are opening in IMDB: %@", temp);
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", urlString]]];
+        } else {
+            NSLog(@"We are cancelling...");
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://imdb.com/title/%@/", urlString]]];
+        }
+    } else {
+        NSLog(@"We're cancelling...");
+    }
+}
 
 @end
