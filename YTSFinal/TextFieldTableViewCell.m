@@ -13,7 +13,7 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    self.entryField.layer.cornerRadius = 5.0;
+    //self.entryField.layer.cornerRadius = 5.0;
     self.entryField.layer.masksToBounds = YES;
     self.entryField.keyboardAppearance = UIKeyboardAppearanceDark;
 }

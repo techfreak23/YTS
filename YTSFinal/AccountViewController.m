@@ -77,7 +77,7 @@ static NSString *reuseIdentifier = @"listCell";
     cell.label.layer.shadowColor = [UIColor blackColor].CGColor;
     cell.label.layer.shadowRadius = 10.0;
     cell.label.layer.shadowOpacity = .80;
-    //cell.label.layer.cornerRadius = 10.0;
+    cell.label.layer.cornerRadius = 2.0;
     cell.label.layer.masksToBounds = YES;
     
     return cell;
@@ -110,7 +110,7 @@ static NSString *reuseIdentifier = @"listCell";
             case 2:
             {
                 NSLog(@"Button 2");
-                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Logout" otherButtonTitles: nil];
+                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Logout" otherButtonTitles: nil];
                 [actionSheet showInView:self.view];
                 break;
             }
@@ -145,6 +145,7 @@ static NSString *reuseIdentifier = @"listCell";
     
     switch (buttonIndex) {
         case 0:
+            [[YTSManager sharedManager] logout];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
             break;
             

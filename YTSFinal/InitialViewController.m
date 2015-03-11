@@ -149,7 +149,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 215.0f;
+        return 235.0f;
     } else {
         return 66.0f;
     }
@@ -158,7 +158,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 215.0f;
+        return 235.0f;
     } else {
        return 66.0;
     }
@@ -186,46 +186,6 @@ static NSString *collectionIdentifier = @"collectionCell";
     }
 }
 
-#pragma mark - action sheet delegate
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    NSString *urlString;
-    NSDictionary *temp;
-    
-    switch (actionSheet.tag) {
-        case 0: {
-            NSLog(@"Action sheet for the first movie");
-            temp = (NSDictionary *)[self.upcomingList objectAtIndex:actionSheet.tag];
-            urlString = [NSString stringWithFormat:@""];
-        }
-            break;
-            
-        case 1: {
-            NSLog(@"Action sheet for the second movie");
-            urlString = @"";
-        }
-            break;
-            
-        case 2: {
-            NSLog(@"Action sheet for the first movie");
-            urlString = @"";
-        }
-            break;
-            
-        case 3: {
-            NSLog(@"Action sheet for the first movie");
-            urlString = @"";
-        }
-            break;
-            
-            
-            
-        default:
-            break;
-    }
-}
-
 #pragma mark - collection table view cell delegate method
 
 - (void)didSelectItem:(NSIndexPath *)indexPath
@@ -233,12 +193,29 @@ static NSString *collectionIdentifier = @"collectionCell";
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
     actionSheet.tag = indexPath.item;
     [actionSheet showInView:self.view];
-    
-    //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@", [temp objectForKey:@"imdb_code"]]]];
 }
 
+#pragma mark - action sheet delegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSDictionary *temp = [self.upcomingList objectAtIndex:actionSheet.tag];
+    NSString *urlString = [temp objectForKey:@"imdb_code"];
+    
+    if (buttonIndex == 0) {
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", urlString]]]) {
+            NSLog(@"We are opening in IMDB: %@", temp);
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", urlString]]];
+        } else {
+            NSLog(@"We are cancelling...");
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://imdb.com/title/%@/", urlString]]];
+        }
+    } else {
+        NSLog(@"We're cancelling...");
+    }
+}
 
 @end
