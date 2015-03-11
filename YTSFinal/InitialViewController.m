@@ -125,7 +125,7 @@ static NSString *collectionIdentifier = @"collectionCell";
         listCell.label.layer.shadowColor = [UIColor blackColor].CGColor;
         listCell.label.layer.shadowRadius = 10.0;
         listCell.label.layer.shadowOpacity = .80;
-        //listCell.label.layer.cornerRadius = 10.0;
+        listCell.label.layer.cornerRadius = 2.0;
         listCell.label.layer.masksToBounds = YES;
         
         listCell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -140,7 +140,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 {
     UILabel *headerLabel = [[UILabel alloc] init];
     headerLabel.font = [UIFont systemFontOfSize:15.0f];
-    headerLabel.textColor = [UIColor greenColor];
+    headerLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
     headerLabel.text = [NSString stringWithFormat:@" Upcoming movies"];
     
     return headerLabel;
