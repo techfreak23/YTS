@@ -35,6 +35,9 @@
 		046DE2381AA01B110097BAB0 /* YTSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2361AA01B110097BAB0 /* YTSManager.m */; };
 		046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE23F1AA032A40097BAB0 /* AccountViewController.m */; };
 		046DE2421AA032A40097BAB0 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2401AA032A40097BAB0 /* AccountViewController.xib */; };
+		048865F31AB279D600B41A20 /* IVTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048865F11AB279D600B41A20 /* IVTVTableViewCell.m */; };
+		048865F41AB279D600B41A20 /* IVTVTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048865F21AB279D600B41A20 /* IVTVTableViewCell.xib */; };
+		048865F71AB2871F00B41A20 /* TableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 048865F61AB2871F00B41A20 /* TableViewCellFactory.m */; };
 		04E0F31C1AA54BB2002F51D7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */; };
 		04E0F31D1AA54BB2002F51D7 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */; };
 		04E0F3211AA56542002F51D7 /* user-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04E0F31E1AA56542002F51D7 /* user-icon@3x.png */; };
@@ -100,6 +103,11 @@
 		046DE23E1AA032A40097BAB0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		046DE23F1AA032A40097BAB0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		046DE2401AA032A40097BAB0 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		048865F01AB279D600B41A20 /* IVTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVTVTableViewCell.h; sourceTree = "<group>"; };
+		048865F11AB279D600B41A20 /* IVTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVTVTableViewCell.m; sourceTree = "<group>"; };
+		048865F21AB279D600B41A20 /* IVTVTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IVTVTableViewCell.xib; sourceTree = "<group>"; };
+		048865F51AB2871F00B41A20 /* TableViewCellFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCellFactory.h; sourceTree = "<group>"; };
+		048865F61AB2871F00B41A20 /* TableViewCellFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewCellFactory.m; sourceTree = "<group>"; };
 		04E0F3191AA54BB2002F51D7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +168,7 @@
 				04E0F31F1AA56542002F51D7 /* user-icon@2x.png */,
 				04E0F3201AA56542002F51D7 /* user-icon.png */,
 				046DE2391AA01B160097BAB0 /* YTS Manager */,
+				048865F81AB2878800B41A20 /* Custom Cells */,
 				046DE1FD1AA01A8D0097BAB0 /* AppDelegate.h */,
 				046DE1FE1AA01A8D0097BAB0 /* AppDelegate.m */,
 				046DE1E41AA01A4E0097BAB0 /* Images.xcassets */,
@@ -169,18 +178,9 @@
 				046DE2001AA01A9C0097BAB0 /* CollectionViewController.h */,
 				046DE2011AA01A9C0097BAB0 /* CollectionViewController.m */,
 				046DE2021AA01A9C0097BAB0 /* CollectionViewController.xib */,
-				046DE2031AA01A9C0097BAB0 /* CollectionViewTableViewCell.h */,
-				046DE2041AA01A9C0097BAB0 /* CollectionViewTableViewCell.m */,
-				046DE2051AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib */,
 				04E0F3191AA54BB2002F51D7 /* DetailViewController.h */,
 				04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */,
 				04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */,
-				046DE2121AA01AFB0097BAB0 /* ListViewCell.h */,
-				046DE2131AA01AFB0097BAB0 /* ListViewCell.m */,
-				046DE2141AA01AFB0097BAB0 /* ListViewCell.xib */,
-				04E0F3241AA57C43002F51D7 /* MultiLabelTableViewCell.h */,
-				04E0F3251AA57C43002F51D7 /* MultiLabelTableViewCell.m */,
-				04E0F3261AA57C43002F51D7 /* MultiLabelTableViewCell.xib */,
 				046DE23E1AA032A40097BAB0 /* AccountViewController.h */,
 				046DE23F1AA032A40097BAB0 /* AccountViewController.m */,
 				046DE2401AA032A40097BAB0 /* AccountViewController.xib */,
@@ -196,9 +196,8 @@
 				046DE21E1AA01AFB0097BAB0 /* SignUpViewController.h */,
 				046DE21F1AA01AFB0097BAB0 /* SignUpViewController.m */,
 				046DE2201AA01AFB0097BAB0 /* SignUpViewController.xib */,
-				046DE2211AA01AFB0097BAB0 /* TextFieldTableViewCell.h */,
-				046DE2221AA01AFB0097BAB0 /* TextFieldTableViewCell.m */,
-				046DE2231AA01AFB0097BAB0 /* TextFieldTableViewCell.xib */,
+				048865F51AB2871F00B41A20 /* TableViewCellFactory.h */,
+				048865F61AB2871F00B41A20 /* TableViewCellFactory.m */,
 				046DE1E61AA01A4E0097BAB0 /* LaunchScreen.xib */,
 				046DE1D71AA01A4E0097BAB0 /* Supporting Files */,
 			);
@@ -240,6 +239,28 @@
 				046DE2341AA01B110097BAB0 /* YIFYMovie.m */,
 			);
 			name = "YTS Manager";
+			sourceTree = "<group>";
+		};
+		048865F81AB2878800B41A20 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				046DE2031AA01A9C0097BAB0 /* CollectionViewTableViewCell.h */,
+				046DE2041AA01A9C0097BAB0 /* CollectionViewTableViewCell.m */,
+				046DE2051AA01A9C0097BAB0 /* CollectionViewTableViewCell.xib */,
+				046DE2121AA01AFB0097BAB0 /* ListViewCell.h */,
+				046DE2131AA01AFB0097BAB0 /* ListViewCell.m */,
+				046DE2141AA01AFB0097BAB0 /* ListViewCell.xib */,
+				04E0F3241AA57C43002F51D7 /* MultiLabelTableViewCell.h */,
+				04E0F3251AA57C43002F51D7 /* MultiLabelTableViewCell.m */,
+				04E0F3261AA57C43002F51D7 /* MultiLabelTableViewCell.xib */,
+				048865F01AB279D600B41A20 /* IVTVTableViewCell.h */,
+				048865F11AB279D600B41A20 /* IVTVTableViewCell.m */,
+				048865F21AB279D600B41A20 /* IVTVTableViewCell.xib */,
+				046DE2211AA01AFB0097BAB0 /* TextFieldTableViewCell.h */,
+				046DE2221AA01AFB0097BAB0 /* TextFieldTableViewCell.m */,
+				046DE2231AA01AFB0097BAB0 /* TextFieldTableViewCell.xib */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		5713901EF1D227B0280FC507 /* Pods */ = {
@@ -351,6 +372,7 @@
 				046DE20A1AA01A9C0097BAB0 /* CollectionViewController.xib in Resources */,
 				046DE2271AA01AFB0097BAB0 /* ListViewCell.xib in Resources */,
 				04E0F31D1AA54BB2002F51D7 /* DetailViewController.xib in Resources */,
+				048865F41AB279D600B41A20 /* IVTVTableViewCell.xib in Resources */,
 				046DE1E81AA01A4E0097BAB0 /* LaunchScreen.xib in Resources */,
 				046DE22D1AA01AFB0097BAB0 /* purple_background@2x.png in Resources */,
 				046DE22B1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.xib in Resources */,
@@ -410,6 +432,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048865F71AB2871F00B41A20 /* TableViewCellFactory.m in Sources */,
 				046DE2281AA01AFB0097BAB0 /* LoginViewController.m in Sources */,
 				046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */,
 				046DE22A1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.m in Sources */,
@@ -420,6 +443,7 @@
 				046DE2311AA01AFB0097BAB0 /* TextFieldTableViewCell.m in Sources */,
 				046DE2371AA01B110097BAB0 /* YIFYMovie.m in Sources */,
 				046DE22F1AA01AFB0097BAB0 /* SignUpViewController.m in Sources */,
+				048865F31AB279D600B41A20 /* IVTVTableViewCell.m in Sources */,
 				046DE20B1AA01A9C0097BAB0 /* CollectionViewTableViewCell.m in Sources */,
 				046DE2381AA01B110097BAB0 /* YTSManager.m in Sources */,
 				046DE2091AA01A9C0097BAB0 /* CollectionViewController.m in Sources */,

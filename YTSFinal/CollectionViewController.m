@@ -137,7 +137,7 @@ int page = 1;
     
     if (indexPath.item == self.movieItems.count) {
         cell.imageView.image = [UIImage imageWithColor:[UIColor grayColor]];
-        
+        cell.titleLabel.text = @"Loading more movies...";
         CGRect frame = CGRectMake(cell.contentView.center.x - 20.0f, cell.contentView.center.y - 20.0f, 40.0f, 40.0f);
         
         self.indicatorView.frame = frame;
@@ -165,6 +165,8 @@ int page = 1;
 {
     NSLog(@"Did select cell: %ld", (long)indexPath.row);
     
+    MoviePosterCollectionViewCell *cell = (MoviePosterCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    
     if (indexPath.item == self.movieItems.count) {
         NSLog(@"This is the final movie ");
     } else {
@@ -172,6 +174,7 @@ int page = 1;
         
         DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         
+        controller.moviePoster = cell.imageView.image;
         controller.title = [temp objectForKey:@"title_long"];
         [controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
         
@@ -181,13 +184,15 @@ int page = 1;
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    cell.layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
     cell.layer.opacity = 0.0f;
     cell.layer.shadowColor = [UIColor blackColor].CGColor;
     cell.layer.masksToBounds = NO;
     cell.layer.shadowOpacity = 0.0f;
     cell.layer.shadowRadius = 0.0f;
     
-    [UIView animateWithDuration:0.25f animations:^{
+    [UIView animateWithDuration:0.35f animations:^{
         cell.layer.opacity = 1.0f;
         cell.layer.shadowOpacity = .65f;
         cell.layer.shadowRadius = 15.0f;

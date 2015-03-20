@@ -12,6 +12,7 @@
 #import "AccountViewController.h"
 #import "CollectionViewTableViewCell.h"
 #import "MultiLabelTableViewCell.h"
+#import "TableViewCellFactory.h"
 
 @interface DetailViewController ()
 
@@ -22,6 +23,7 @@
 
 static NSString * const reuseIdentifier = @"movieCell";
 static NSString * const defaultReuseIdentifier = @"multiCell";
+static NSString * const defaultIdentifier = @"defaultCell";
 
 @implementation DetailViewController
 
@@ -33,6 +35,7 @@ static NSString * const defaultReuseIdentifier = @"multiCell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CollectionViewTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"MultiLabelTableViewCell" bundle:nil] forCellReuseIdentifier:defaultReuseIdentifier];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:defaultIdentifier];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
@@ -95,17 +98,20 @@ static NSString * const defaultReuseIdentifier = @"multiCell";
         case 0: {
             switch (indexPath.row) {
                 case 0: {
-                    MultiLabelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultReuseIdentifier forIndexPath:indexPath];
-                    if (!cell) {
-                        cell = [[MultiLabelTableViewCell alloc] init];
-                    }
-                    cell.titleLabel.text = [[[self.sections objectAtIndex:indexPath.section] objectAtIndex:indexPath.row] objectForKey:@"title"];
+                    MultiLabelTableViewCell *cell = (MultiLabelTableViewCell *)[[TableViewCellFactory factory] tableView:tableView withStyle:TableViewCellStyleMulti forIndexPath:indexPath];
+                    
                     return cell;
                 }
                     break;
                     
                 case 1: {
-                    
+                    UITableViewCell *plainCell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier];
+                    if (!plainCell) {
+                        plainCell = [[UITableViewCell alloc] init];
+                        plainCell.imageView.image = self.moviePoster;
+                        plainCell.backgroundColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
+                        return plainCell;
+                    }
                 }
                     break;
                     
@@ -116,12 +122,32 @@ static NSString * const defaultReuseIdentifier = @"multiCell";
             break;
             
         case 1: {
-            
+            NSArray *temp = [[self.sections objectAtIndex:indexPath.section] objectForKey:@"actors"];
+            switch (indexPath.row) {
+                case 0: {
+                    CollectionViewTableViewCell *cell = (CollectionViewTableViewCell *)[[TableViewCellFactory factory] tableView:tableView withStyle:TableViewCellStyleCollectionView forIndexPath:indexPath];
+                    
+                    return cell;
+                }
+                    break;
+                    
+                case 1: {
+                    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier forIndexPath:indexPath];
+                    if (!cell) {
+                        cell = [[UITableViewCell alloc] init];
+                    }
+                    cell.textLabel.text = @"Directors go here!";
+                    return cell;
+                }
+                    break;
+            }
         }
             break;
             
         case 2: {
+            CollectionViewTableViewCell *cell = (CollectionViewTableViewCell *)[[TableViewCellFactory factory] tableView:tableView withStyle:TableViewCellStyleCollectionView forIndexPath:indexPath];
             
+            return cell;
         }
             break;
             
@@ -130,6 +156,11 @@ static NSString * const defaultReuseIdentifier = @"multiCell";
     }
     
     return nil;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 44.0f;
 }
 
 @end
