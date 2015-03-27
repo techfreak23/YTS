@@ -10,6 +10,8 @@
 
 @interface DetailViewController : UITableViewController
 
+@property (nonatomic, strong) UIImage *moviePoster;
+
 - (void)fetchDetailsForMovieID:(NSString *)movieID;
 
 @end

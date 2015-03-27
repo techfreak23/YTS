@@ -60,6 +60,7 @@ static NSString *reuseIdentifier = @"textCell";
 
 - (void)login
 {
+    [self.view endEditing:YES];
     if ([self validateEmailField:self.emailField.text]) {
         [[YTSManager sharedManager] loginWithUsername:self.emailField.text password:self.passField.text];
     } else {
@@ -113,12 +114,12 @@ static NSString *reuseIdentifier = @"textCell";
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return 66.0f;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return 66.0f;
 }
 
 #pragma mark - text field delegate

@@ -47,6 +47,7 @@ static NSString *reuseIdentifier = @"movieCell";
 {
     [self.collectionView registerNib:[UINib nibWithNibName:@"MoviePosterCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     self.collectionView.backgroundColor = [UIColor clearColor];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
 }
