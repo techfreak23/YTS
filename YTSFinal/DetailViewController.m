@@ -94,6 +94,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /*
     switch (indexPath.section) {
         case 0: {
             switch (indexPath.row) {
@@ -154,13 +155,13 @@ static NSString * const defaultIdentifier = @"defaultCell";
         default:
             break;
     }
-    
+    */
     return nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44.0f;
+    return 56.0f;
 }
 
 @end
