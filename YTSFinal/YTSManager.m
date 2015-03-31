@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "YTSManager.h"
 
-#define kYTSEndpoint @"http://yts.re/api/v2"
+#define kYTSEndpoint @"http://yts.to/api/v2"
 
 typedef void (^RequestCompletion)(id responseItem, NSError *error);
 
@@ -111,6 +111,8 @@ BOOL isLoggedIn = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"didLoginSuccessfully" object:nil];
                 });
+            } else {
+                NSLog(@"There was an error with the login...");
             }
         } else {
             NSLog(@"There was an error logging in...");
