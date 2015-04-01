@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "YTSManager.h"
 
-#define kYTSEndpoint @"http://yts.re/api/v2"
+#define kYTSEndpoint @"http://yts.to/api/v2"
 
 typedef void (^RequestCompletion)(id responseItem, NSError *error);
 
