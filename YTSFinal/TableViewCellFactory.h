@@ -33,5 +33,6 @@ typedef NS_ENUM(int, TableViewCellStyle) {
 + (instancetype)factory;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView withStyle:(TableViewCellStyle)style forIndexPath:(NSIndexPath *)indexPath;
+- (UITableViewCell *)createCellForTableView:(UITableView *)tableView style:(TableViewCellStyle)style indexPath:(NSIndexPath *)indexPath identifier:(NSString *)identifier;
 
 @end

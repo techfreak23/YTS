@@ -193,7 +193,7 @@ static NSString *collectionIdentifier = @"collectionCell";
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Open in IMDB?" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Yes", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in IMDB", nil];
     actionSheet.tag = indexPath.item;
     [actionSheet showInView:self.view];
 }

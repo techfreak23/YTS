@@ -111,6 +111,8 @@ BOOL isLoggedIn = NO;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [[NSNotificationCenter defaultCenter] postNotificationName:@"didLoginSuccessfully" object:nil];
                 });
+            } else {
+                NSLog(@"There was an error with the login...");
             }
         } else {
             NSLog(@"There was an error logging in...");
