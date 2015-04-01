@@ -49,8 +49,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
     NSArray *temp3 = @[@{@"screenshots": [fullDetails objectForKey:@"images"]}];
     
     self.sections = [@[temp1, temp2, temp3] mutableCopy];
-    NSLog(@"Sections: %@", self.sections);
-    [self.tableView reloadData];
+    //NSLog(@"Sections: %@", self.sections);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -75,6 +74,8 @@ static NSString * const defaultIdentifier = @"defaultCell";
 - (void)didFinishWithMovieDetails:(NSNotification *)notification
 {
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[notification object]];
+    self.fullMovieDetails = temp;
+    NSLog(@"Full movie details: %@", self.fullMovieDetails);
     [self createSectionedDetails:temp];
 }
 
@@ -82,12 +83,12 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.sections.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.sections objectAtIndex:section] count];
+    return 4;
 }
 
 #pragma mark - table view delegate
@@ -156,7 +157,15 @@ static NSString * const defaultIdentifier = @"defaultCell";
             break;
     }
     */
-    return nil;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultIdentifier];
+    }
+    
+    cell.textLabel.text = @"Test";
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
