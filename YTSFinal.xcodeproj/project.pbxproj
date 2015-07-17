@@ -35,6 +35,7 @@
 		046DE2381AA01B110097BAB0 /* YTSManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE2361AA01B110097BAB0 /* YTSManager.m */; };
 		046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 046DE23F1AA032A40097BAB0 /* AccountViewController.m */; };
 		046DE2421AA032A40097BAB0 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 046DE2401AA032A40097BAB0 /* AccountViewController.xib */; };
+		0475D7091B597D1A004B7711 /* YTSModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0475D7071B597D1A004B7711 /* YTSModel.xcdatamodeld */; };
 		048865F31AB279D600B41A20 /* IVTVTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 048865F11AB279D600B41A20 /* IVTVTableViewCell.m */; };
 		048865F41AB279D600B41A20 /* IVTVTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 048865F21AB279D600B41A20 /* IVTVTableViewCell.xib */; };
 		048865F71AB2871F00B41A20 /* TableViewCellFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 048865F61AB2871F00B41A20 /* TableViewCellFactory.m */; };
@@ -103,6 +104,7 @@
 		046DE23E1AA032A40097BAB0 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		046DE23F1AA032A40097BAB0 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
 		046DE2401AA032A40097BAB0 /* AccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
+		0475D7081B597D1A004B7711 /* YTSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YTSModel.xcdatamodel; sourceTree = "<group>"; };
 		048865F01AB279D600B41A20 /* IVTVTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IVTVTableViewCell.h; sourceTree = "<group>"; };
 		048865F11AB279D600B41A20 /* IVTVTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IVTVTableViewCell.m; sourceTree = "<group>"; };
 		048865F21AB279D600B41A20 /* IVTVTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IVTVTableViewCell.xib; sourceTree = "<group>"; };
@@ -141,6 +143,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045460BC1B58791C00568EF3 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				046DE23E1AA032A40097BAB0 /* AccountViewController.h */,
+				046DE23F1AA032A40097BAB0 /* AccountViewController.m */,
+				046DE2401AA032A40097BAB0 /* AccountViewController.xib */,
+				046DE2151AA01AFB0097BAB0 /* LoginViewController.h */,
+				046DE2161AA01AFB0097BAB0 /* LoginViewController.m */,
+				046DE2171AA01AFB0097BAB0 /* LoginViewController.xib */,
+				046DE21E1AA01AFB0097BAB0 /* SignUpViewController.h */,
+				046DE21F1AA01AFB0097BAB0 /* SignUpViewController.m */,
+				046DE2201AA01AFB0097BAB0 /* SignUpViewController.xib */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
 		046DE1CB1AA01A4E0097BAB0 = {
 			isa = PBXGroup;
 			children = (
@@ -181,21 +199,13 @@
 				04E0F3191AA54BB2002F51D7 /* DetailViewController.h */,
 				04E0F31A1AA54BB2002F51D7 /* DetailViewController.m */,
 				04E0F31B1AA54BB2002F51D7 /* DetailViewController.xib */,
-				046DE23E1AA032A40097BAB0 /* AccountViewController.h */,
-				046DE23F1AA032A40097BAB0 /* AccountViewController.m */,
-				046DE2401AA032A40097BAB0 /* AccountViewController.xib */,
-				046DE2151AA01AFB0097BAB0 /* LoginViewController.h */,
-				046DE2161AA01AFB0097BAB0 /* LoginViewController.m */,
-				046DE2171AA01AFB0097BAB0 /* LoginViewController.xib */,
 				046DE2181AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.h */,
 				046DE2191AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.m */,
 				046DE21A1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.xib */,
+				045460BC1B58791C00568EF3 /* Account */,
 				046DE21B1AA01AFB0097BAB0 /* purple_background.png */,
 				046DE21C1AA01AFB0097BAB0 /* purple_background@2x.png */,
 				046DE21D1AA01AFB0097BAB0 /* purple_background@3x.png */,
-				046DE21E1AA01AFB0097BAB0 /* SignUpViewController.h */,
-				046DE21F1AA01AFB0097BAB0 /* SignUpViewController.m */,
-				046DE2201AA01AFB0097BAB0 /* SignUpViewController.xib */,
 				048865F51AB2871F00B41A20 /* TableViewCellFactory.h */,
 				048865F61AB2871F00B41A20 /* TableViewCellFactory.m */,
 				046DE1E61AA01A4E0097BAB0 /* LaunchScreen.xib */,
@@ -209,6 +219,7 @@
 			children = (
 				046DE1D81AA01A4E0097BAB0 /* Info.plist */,
 				046DE1D91AA01A4E0097BAB0 /* main.m */,
+				0475D7071B597D1A004B7711 /* YTSModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -438,6 +449,7 @@
 				046DE22A1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.m in Sources */,
 				046DE1FF1AA01A8D0097BAB0 /* AppDelegate.m in Sources */,
 				046DE1DA1AA01A4E0097BAB0 /* main.m in Sources */,
+				0475D7091B597D1A004B7711 /* YTSModel.xcdatamodeld in Sources */,
 				046DE2241AA01AFB0097BAB0 /* InitialViewController.m in Sources */,
 				04E0F3271AA57C43002F51D7 /* MultiLabelTableViewCell.m in Sources */,
 				046DE2311AA01AFB0097BAB0 /* TextFieldTableViewCell.m in Sources */,
@@ -653,6 +665,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0475D7071B597D1A004B7711 /* YTSModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0475D7081B597D1A004B7711 /* YTSModel.xcdatamodel */,
+			);
+			currentVersion = 0475D7081B597D1A004B7711 /* YTSModel.xcdatamodel */;
+			path = YTSModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 046DE1CC1AA01A4E0097BAB0 /* Project object */;
 }
