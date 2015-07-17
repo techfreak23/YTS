@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="YTSActor" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="YTSActor" representedClassName="YTSActor" syncable="YES">
         <attribute name="character_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="medium_image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="small_image" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSMovie" inverseName="actors" inverseEntity="YTSMovie" syncable="YES"/>
     </entity>
-    <entity name="YTSDirector" syncable="YES">
+    <entity name="YTSDirector" representedClassName="YTSDirector" syncable="YES">
         <attribute name="medium_image" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="small_image" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSMovie" inverseName="directors" inverseEntity="YTSMovie" syncable="YES"/>
     </entity>
-    <entity name="YTSGenre" syncable="YES">
+    <entity name="YTSGenre" representedClassName="YTSGenre" syncable="YES">
         <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSMovie" inverseName="genres" inverseEntity="YTSMovie" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSMovie" inverseName="genres" inverseEntity="YTSMovie" syncable="YES"/>
     </entity>
-    <entity name="YTSListMovie" syncable="YES">
+    <entity name="YTSListMovie" representedClassName="YTSListMovie" syncable="YES">
         <attribute name="background_image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date_uploaded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imdb_code" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,7 +35,7 @@
         <attribute name="title_long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="YTSMovie" syncable="YES">
+    <entity name="YTSMovie" representedClassName="YTSMovie" syncable="YES">
         <attribute name="date_uploaded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="description_full" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="description_intro" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,9 +57,12 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title_long" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="genres" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSGenre" inverseName="newRelationship" inverseEntity="YTSGenre" syncable="YES"/>
+        <relationship name="actors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YTSActor" inverseName="movie" inverseEntity="YTSActor" syncable="YES"/>
+        <relationship name="directors" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSDirector" inverseName="movie" inverseEntity="YTSDirector" syncable="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YTSGenre" inverseName="movie" inverseEntity="YTSGenre" syncable="YES"/>
+        <relationship name="torrents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="YTSTorrent" inverseName="movie" inverseEntity="YTSTorrent" syncable="YES"/>
     </entity>
-    <entity name="YTSTorrent" syncable="YES">
+    <entity name="YTSTorrent" representedClassName="YTSTorrent" syncable="YES">
         <attribute name="date_uploaded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="download_count" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="framerate" optional="YES" attributeType="String" syncable="YES"/>
@@ -69,13 +74,14 @@
         <attribute name="size_bytes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="torrent_hash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="torrent_url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="YTSMovie" inverseName="torrents" inverseEntity="YTSMovie" syncable="YES"/>
     </entity>
     <elements>
-        <element name="YTSActor" positionX="-90" positionY="291" width="128" height="105"/>
-        <element name="YTSDirector" positionX="-36" positionY="-9" width="128" height="90"/>
-        <element name="YTSGenre" positionX="-351" positionY="255" width="128" height="73"/>
+        <element name="YTSActor" positionX="-90" positionY="291" width="128" height="118"/>
+        <element name="YTSDirector" positionX="-36" positionY="-9" width="128" height="103"/>
         <element name="YTSListMovie" positionX="-666" positionY="-90" width="128" height="283"/>
-        <element name="YTSMovie" positionX="-819" positionY="90" width="128" height="373"/>
-        <element name="YTSTorrent" positionX="-371" positionY="-21" width="128" height="210"/>
+        <element name="YTSTorrent" positionX="-371" positionY="-21" width="128" height="223"/>
+        <element name="YTSMovie" positionX="-351" positionY="236" width="128" height="418"/>
+        <element name="YTSGenre" positionX="-639" positionY="303" width="128" height="73"/>
     </elements>
 </model>
