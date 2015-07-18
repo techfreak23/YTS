@@ -2,13 +2,14 @@
 //  YTSMovie.m
 //  YTSFinal
 //
-//  Created by Art Sevilla on 7/17/15.
+//  Created by Mac Demo on 7/17/15.
 //  Copyright (c) 2015 Art Sevilla. All rights reserved.
 //
 
 #import "YTSMovie.h"
 #import "YTSActor.h"
 #import "YTSDirector.h"
+#import "YTSGenre.h"
 #import "YTSTorrent.h"
 
 
@@ -35,9 +36,9 @@
 @dynamic title;
 @dynamic title_long;
 @dynamic year;
-@dynamic torrents;
 @dynamic actors;
 @dynamic directors;
 @dynamic genres;
+@dynamic torrents;
 
 @end

@@ -2,14 +2,14 @@
 //  YTSMovie.h
 //  YTSFinal
 //
-//  Created by Art Sevilla on 7/17/15.
+//  Created by Mac Demo on 7/17/15.
 //  Copyright (c) 2015 Art Sevilla. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class YTSActor, YTSDirector, YTSTorrent;
+@class YTSActor, YTSDirector, YTSGenre, YTSTorrent;
 
 @interface YTSMovie : NSManagedObject
 
@@ -34,27 +34,27 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * title_long;
 @property (nonatomic, retain) NSString * year;
-@property (nonatomic, retain) NSSet *torrents;
 @property (nonatomic, retain) NSSet *actors;
 @property (nonatomic, retain) YTSDirector *directors;
 @property (nonatomic, retain) NSSet *genres;
+@property (nonatomic, retain) NSSet *torrents;
 @end
 
 @interface YTSMovie (CoreDataGeneratedAccessors)
-
-- (void)addTorrentsObject:(YTSTorrent *)value;
-- (void)removeTorrentsObject:(YTSTorrent *)value;
-- (void)addTorrents:(NSSet *)values;
-- (void)removeTorrents:(NSSet *)values;
 
 - (void)addActorsObject:(YTSActor *)value;
 - (void)removeActorsObject:(YTSActor *)value;
 - (void)addActors:(NSSet *)values;
 - (void)removeActors:(NSSet *)values;
 
-- (void)addGenresObject:(NSManagedObject *)value;
-- (void)removeGenresObject:(NSManagedObject *)value;
+- (void)addGenresObject:(YTSGenre *)value;
+- (void)removeGenresObject:(YTSGenre *)value;
 - (void)addGenres:(NSSet *)values;
 - (void)removeGenres:(NSSet *)values;
+
+- (void)addTorrentsObject:(YTSTorrent *)value;
+- (void)removeTorrentsObject:(YTSTorrent *)value;
+- (void)addTorrents:(NSSet *)values;
+- (void)removeTorrents:(NSSet *)values;
 
 @end

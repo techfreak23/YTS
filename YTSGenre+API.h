@@ -1,5 +1,5 @@
 //
-//  YTSGenre.m
+//  YTSGenre+API.h
 //  YTSFinal
 //
 //  Created by Mac Demo on 7/17/15.
@@ -7,12 +7,7 @@
 //
 
 #import "YTSGenre.h"
-#import "YTSMovie.h"
 
-
-@implementation YTSGenre
-
-@dynamic genre;
-@dynamic movie;
+@interface YTSGenre (API)
 
 @end

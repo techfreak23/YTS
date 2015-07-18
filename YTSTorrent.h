@@ -2,13 +2,14 @@
 //  YTSTorrent.h
 //  YTSFinal
 //
-//  Created by Art Sevilla on 7/17/15.
+//  Created by Mac Demo on 7/17/15.
 //  Copyright (c) 2015 Art Sevilla. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class YTSMovie;
 
 @interface YTSTorrent : NSManagedObject
 
@@ -23,6 +24,6 @@
 @property (nonatomic, retain) NSNumber * size_bytes;
 @property (nonatomic, retain) NSString * torrent_hash;
 @property (nonatomic, retain) NSString * torrent_url;
-@property (nonatomic, retain) NSManagedObject *movie;
+@property (nonatomic, retain) YTSMovie *movie;
 
 @end
