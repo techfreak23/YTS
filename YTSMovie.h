@@ -34,9 +34,9 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * title_long;
 @property (nonatomic, retain) NSString * year;
+@property (nonatomic, retain) NSString * yt_trailer_code;
 @property (nonatomic, retain) NSSet *actors;
-@property (nonatomic, retain) YTSDirector *directors;
-@property (nonatomic, retain) NSSet *genres;
+@property (nonatomic, retain) NSSet *directors;
 @property (nonatomic, retain) NSSet *torrents;
 @end
 
@@ -47,10 +47,10 @@
 - (void)addActors:(NSSet *)values;
 - (void)removeActors:(NSSet *)values;
 
-- (void)addGenresObject:(YTSGenre *)value;
-- (void)removeGenresObject:(YTSGenre *)value;
-- (void)addGenres:(NSSet *)values;
-- (void)removeGenres:(NSSet *)values;
+- (void)addDirectorsObject:(YTSDirector *)value;
+- (void)removeDirectorsObject:(YTSDirector *)value;
+- (void)addDirectors:(NSSet *)values;
+- (void)removeDirectors:(NSSet *)values;
 
 - (void)addTorrentsObject:(YTSTorrent *)value;
 - (void)removeTorrentsObject:(YTSTorrent *)value;

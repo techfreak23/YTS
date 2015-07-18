@@ -13,6 +13,7 @@
 @implementation YTSActor
 
 @dynamic character_name;
+@dynamic imdb_code;
 @dynamic medium_image;
 @dynamic name;
 @dynamic small_image;

@@ -10,4 +10,6 @@
 
 @interface YTSTorrent (API)
 
+- (YTSTorrent *)createTorrentWithInfo:(NSDictionary *)info;
+
 @end

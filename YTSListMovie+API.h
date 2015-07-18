@@ -10,4 +10,6 @@
 
 @interface YTSListMovie (API)
 
+- (YTSListMovie *)createListMovieWithInfo:(NSDictionary *)info;
+
 @end

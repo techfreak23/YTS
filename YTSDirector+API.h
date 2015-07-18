@@ -10,4 +10,6 @@
 
 @interface YTSDirector (API)
 
+- (YTSDirector *)createDirectorWithInfo:(NSDictionary *)info;
+
 @end

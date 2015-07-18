@@ -10,4 +10,6 @@
 
 @interface YTSActor (API)
 
+- (YTSActor *)createActorWithInfo:(NSDictionary *)info;
+
 @end

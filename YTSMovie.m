@@ -9,7 +9,6 @@
 #import "YTSMovie.h"
 #import "YTSActor.h"
 #import "YTSDirector.h"
-#import "YTSGenre.h"
 #import "YTSTorrent.h"
 
 
@@ -36,9 +35,9 @@
 @dynamic title;
 @dynamic title_long;
 @dynamic year;
+@dynamic yt_trailer_code;
 @dynamic actors;
 @dynamic directors;
-@dynamic genres;
 @dynamic torrents;
 
 @end

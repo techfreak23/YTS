@@ -49,14 +49,12 @@
 		04EF4F531B59CBBC000B3BE4 /* YTSTorrent.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F521B59CBBC000B3BE4 /* YTSTorrent.m */; };
 		04EF4F561B59CBBC000B3BE4 /* YTSActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F551B59CBBC000B3BE4 /* YTSActor.m */; };
 		04EF4F591B59CBBC000B3BE4 /* YTSDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F581B59CBBC000B3BE4 /* YTSDirector.m */; };
-		04EF4F5C1B59CBBC000B3BE4 /* YTSGenre.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F5B1B59CBBC000B3BE4 /* YTSGenre.m */; };
 		04EF4F5F1B59CBBC000B3BE4 /* YTSListMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F5E1B59CBBC000B3BE4 /* YTSListMovie.m */; };
 		04EF4F731B59E768000B3BE4 /* YTSMovie+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F721B59E768000B3BE4 /* YTSMovie+API.m */; };
 		04EF4F761B59E7A1000B3BE4 /* YTSTorrent+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F751B59E7A1000B3BE4 /* YTSTorrent+API.m */; };
 		04EF4F791B59E7B8000B3BE4 /* YTSListMovie+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F781B59E7B8000B3BE4 /* YTSListMovie+API.m */; };
 		04EF4F7C1B59E7CD000B3BE4 /* YTSActor+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F7B1B59E7CD000B3BE4 /* YTSActor+API.m */; };
 		04EF4F801B59E7F0000B3BE4 /* YTSDirector+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F7F1B59E7F0000B3BE4 /* YTSDirector+API.m */; };
-		04EF4F831B59E80C000B3BE4 /* YTSGenre+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 04EF4F821B59E80C000B3BE4 /* YTSGenre+API.m */; };
 		2E790C943EA791F201A0106F /* libPods-YTSFinal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9035DA3717560C4118E710 /* libPods-YTSFinal.a */; };
 /* End PBXBuildFile section */
 
@@ -137,8 +135,6 @@
 		04EF4F551B59CBBC000B3BE4 /* YTSActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSActor.m; sourceTree = "<group>"; };
 		04EF4F571B59CBBC000B3BE4 /* YTSDirector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSDirector.h; sourceTree = "<group>"; };
 		04EF4F581B59CBBC000B3BE4 /* YTSDirector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSDirector.m; sourceTree = "<group>"; };
-		04EF4F5A1B59CBBC000B3BE4 /* YTSGenre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSGenre.h; sourceTree = "<group>"; };
-		04EF4F5B1B59CBBC000B3BE4 /* YTSGenre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSGenre.m; sourceTree = "<group>"; };
 		04EF4F5D1B59CBBC000B3BE4 /* YTSListMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTSListMovie.h; sourceTree = "<group>"; };
 		04EF4F5E1B59CBBC000B3BE4 /* YTSListMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTSListMovie.m; sourceTree = "<group>"; };
 		04EF4F711B59E768000B3BE4 /* YTSMovie+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTSMovie+API.h"; sourceTree = "<group>"; };
@@ -151,8 +147,6 @@
 		04EF4F7B1B59E7CD000B3BE4 /* YTSActor+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTSActor+API.m"; sourceTree = "<group>"; };
 		04EF4F7E1B59E7F0000B3BE4 /* YTSDirector+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTSDirector+API.h"; sourceTree = "<group>"; };
 		04EF4F7F1B59E7F0000B3BE4 /* YTSDirector+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTSDirector+API.m"; sourceTree = "<group>"; };
-		04EF4F811B59E80C000B3BE4 /* YTSGenre+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YTSGenre+API.h"; sourceTree = "<group>"; };
-		04EF4F821B59E80C000B3BE4 /* YTSGenre+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YTSGenre+API.m"; sourceTree = "<group>"; };
 		1F934169E2C2F87B633AE686 /* Pods-YTSFinal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YTSFinal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YTSFinal/Pods-YTSFinal.debug.xcconfig"; sourceTree = "<group>"; };
 		2B3D7BFF263B1CD571641F49 /* Pods-YTSFinal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YTSFinal.release.xcconfig"; path = "Pods/Target Support Files/Pods-YTSFinal/Pods-YTSFinal.release.xcconfig"; sourceTree = "<group>"; };
 		DF9035DA3717560C4118E710 /* libPods-YTSFinal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YTSFinal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,8 +317,6 @@
 			children = (
 				04EF4F5D1B59CBBC000B3BE4 /* YTSListMovie.h */,
 				04EF4F5E1B59CBBC000B3BE4 /* YTSListMovie.m */,
-				04EF4F5A1B59CBBC000B3BE4 /* YTSGenre.h */,
-				04EF4F5B1B59CBBC000B3BE4 /* YTSGenre.m */,
 				04EF4F571B59CBBC000B3BE4 /* YTSDirector.h */,
 				04EF4F581B59CBBC000B3BE4 /* YTSDirector.m */,
 				04EF4F541B59CBBC000B3BE4 /* YTSActor.h */,
@@ -350,8 +342,6 @@
 				04EF4F7B1B59E7CD000B3BE4 /* YTSActor+API.m */,
 				04EF4F7E1B59E7F0000B3BE4 /* YTSDirector+API.h */,
 				04EF4F7F1B59E7F0000B3BE4 /* YTSDirector+API.m */,
-				04EF4F811B59E80C000B3BE4 /* YTSGenre+API.h */,
-				04EF4F821B59E80C000B3BE4 /* YTSGenre+API.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";
@@ -532,7 +522,6 @@
 				046DE2411AA032A40097BAB0 /* AccountViewController.m in Sources */,
 				046DE22A1AA01AFB0097BAB0 /* MoviePosterCollectionViewCell.m in Sources */,
 				046DE1FF1AA01A8D0097BAB0 /* AppDelegate.m in Sources */,
-				04EF4F5C1B59CBBC000B3BE4 /* YTSGenre.m in Sources */,
 				04EF4F561B59CBBC000B3BE4 /* YTSActor.m in Sources */,
 				046DE1DA1AA01A4E0097BAB0 /* main.m in Sources */,
 				0475D7091B597D1A004B7711 /* YTSModel.xcdatamodeld in Sources */,
@@ -543,7 +532,6 @@
 				046DE2311AA01AFB0097BAB0 /* TextFieldTableViewCell.m in Sources */,
 				04EF4F731B59E768000B3BE4 /* YTSMovie+API.m in Sources */,
 				046DE22F1AA01AFB0097BAB0 /* SignUpViewController.m in Sources */,
-				04EF4F831B59E80C000B3BE4 /* YTSGenre+API.m in Sources */,
 				048865F31AB279D600B41A20 /* IVTVTableViewCell.m in Sources */,
 				04EF4F531B59CBBC000B3BE4 /* YTSTorrent.m in Sources */,
 				046DE20B1AA01A9C0097BAB0 /* CollectionViewTableViewCell.m in Sources */,

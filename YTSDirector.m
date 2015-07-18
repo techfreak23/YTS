@@ -12,6 +12,7 @@
 
 @implementation YTSDirector
 
+@dynamic imdb_code;
 @dynamic medium_image;
 @dynamic name;
 @dynamic small_image;
