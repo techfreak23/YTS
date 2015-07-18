@@ -19,5 +19,6 @@
 
 @property (nonatomic, weak) id <CollectionViewCellDelegate> delegate;
 @property (nonatomic, strong) NSArray *upcomingMovies;
+@property (nonatomic, strong) NSString *titleKey;
 
 @end

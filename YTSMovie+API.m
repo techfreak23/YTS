@@ -55,7 +55,7 @@
     
     retMovie.rt_audience_score = [NSNumber numberWithInt:audienceScore.intValue];
     retMovie.rt_critics_score = [NSNumber numberWithInt:criticScore.intValue];
-    retMovie.runtime = [info objectForKey:@"runtime"];
+    retMovie.runtime = [NSString stringWithFormat:@"%@", [info objectForKey:@"runtime"]];
     retMovie.slug = [info objectForKey:@"slug"];
     retMovie.title = [info objectForKey:@"title"];
     retMovie.title_long = [info objectForKey:@"title_long"];
@@ -66,7 +66,7 @@
     
     for (NSDictionary *tempDict in actors) {
         YTSActor *actor = [[YTSActor alloc] createActorWithInfo:tempDict];
-        actor.movie = self;
+        //actor.movie = self;
         [retMovie addActorsObject:actor];
     }
     
@@ -74,7 +74,7 @@
     
     for (NSDictionary *tempDict in directors) {
         YTSDirector *director = [[YTSDirector alloc] createDirectorWithInfo:tempDict];
-        director.movie = self;
+        //director.movie = self;
         [retMovie addDirectorsObject:director];
     }
     
@@ -82,7 +82,7 @@
     
     for (NSDictionary *tempDict in torrents) {
         YTSTorrent *torrent = [[YTSTorrent alloc] createTorrentWithInfo:tempDict];
-        torrent.movie = self;
+        //torrent.movie = self;
         [retMovie addTorrentsObject:torrent];
     }
     

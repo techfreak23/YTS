@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YTSActor.h"
 
 @interface DetailViewController : UITableViewController
 
 @property (nonatomic, strong) UIImage *moviePoster;
+@property (nonatomic, strong) YTSMovie *movie;
 
 - (void)fetchDetailsForMovieID:(NSString *)movieID;
 

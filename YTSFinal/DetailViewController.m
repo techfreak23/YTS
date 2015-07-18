@@ -68,7 +68,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (void)fetchDetailsForMovieID:(NSString *)movieID
 {
-    [[YTSManager sharedManager] fetchMovieDetailsForID:movieID];
+    //[[YTSManager sharedManager] fetchMovieDetailsForID:movieID];
 }
 
 - (void)didFinishWithMovieDetails:(NSNotification *)notification

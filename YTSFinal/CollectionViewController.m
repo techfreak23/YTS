@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "AccountViewController.h"
 #import "YTSManager.h"
+#import "YTSMovie+API.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface UIImage (UIColor)
@@ -171,12 +172,14 @@ int page = 1;
         NSLog(@"This is the final movie ");
     } else {
         NSDictionary *temp = [self.movieItems objectAtIndex:indexPath.item];
+        YTSMovie *movie = [[YTSMovie alloc] createMovieObjectWithInfo:temp];
         
         DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         
+        controller.movie = movie;
         controller.moviePoster = cell.imageView.image;
         controller.title = [temp objectForKey:@"title_long"];
-        [controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
+        //[controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
         
         [self.navigationController pushViewController:controller animated:YES];
     }
