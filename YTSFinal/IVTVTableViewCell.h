@@ -10,7 +10,7 @@
 
 @interface IVTVTableViewCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UIView *cellView;
-//@property (nonatomic, weak) IBOutlet UIImageView *;
+@property (nonatomic, weak) IBOutlet UIImageView *posterView;
+@property (nonatomic, weak) IBOutlet UITextView *descView;
 
 @end

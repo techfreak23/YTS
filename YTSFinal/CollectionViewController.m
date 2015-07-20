@@ -172,14 +172,12 @@ int page = 1;
         NSLog(@"This is the final movie ");
     } else {
         NSDictionary *temp = [self.movieItems objectAtIndex:indexPath.item];
-        YTSMovie *movie = [[YTSMovie alloc] createMovieObjectWithInfo:temp];
         
         DetailViewController *controller = [[DetailViewController alloc] initWithNibName:@"DetailViewController" bundle:nil];
         
-        controller.movie = movie;
         controller.moviePoster = cell.imageView.image;
-        controller.title = [temp objectForKey:@"title_long"];
-        //[controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
+        //controller.title = [temp objectForKey:@"title_long"];
+        [controller fetchDetailsForMovieID:[temp objectForKey:@"id"]];
         
         [self.navigationController pushViewController:controller animated:YES];
     }
