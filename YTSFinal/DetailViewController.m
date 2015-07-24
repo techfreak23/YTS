@@ -134,6 +134,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     switch (indexPath.row) {
         case 0: {
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleCell"];
@@ -187,8 +188,9 @@ static NSString * const defaultIdentifier = @"defaultCell";
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultIdentifier];
             }
             
-            cell.backgroundColor = [UIColor clearColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:16.0];
             cell.textLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
             cell.textLabel.text = @"Screenshots";
             
@@ -203,10 +205,11 @@ static NSString * const defaultIdentifier = @"defaultCell";
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultIdentifier];
             }
             
-            cell.backgroundColor = [UIColor clearColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:16.0];
             cell.textLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
-            cell.textLabel.text = @"Cast";
+            cell.textLabel.text = @"Actors";
             
             return cell;
         }
@@ -219,24 +222,33 @@ static NSString * const defaultIdentifier = @"defaultCell";
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultIdentifier];
             }
             
-            NSArray *directors = [self.fullMovieDetails objectForKey:@"directors"];
-            NSString *directorName = [NSString stringWithFormat:@"%@", [[directors objectAtIndex:0] objectForKey:@"name"]];
-            NSString *director = [NSString stringWithFormat:@"Director: %@", directorName];
-            
-            NSAttributedString *directorString = [[NSAttributedString alloc] initWithString: director];
-            
-            NSAttributedString *name = [[NSAttributedString alloc] initWithString:@"" attributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:15.0]}];
-            
-            
-            
-            cell.backgroundColor = [UIColor clearColor];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.textLabel.text = @"Test";
+            cell.backgroundColor = [UIColor clearColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+            cell.textLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
+            cell.textLabel.text = @"Directors";
+            
+            return cell;
         }
             break;
             
-        default:
+        default: {
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier forIndexPath:indexPath];
+            
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:defaultIdentifier];
+            }
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.backgroundColor = [UIColor clearColor];
+            cell.textLabel.font = [UIFont systemFontOfSize:16.0];
+            cell.textLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
+            cell.textLabel.text = @"";
+            
+            return cell;
+        }
             break;
+            
     }
     
     return nil;
