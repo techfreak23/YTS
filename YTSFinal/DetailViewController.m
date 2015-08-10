@@ -62,6 +62,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:defaultIdentifier];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
+    
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.tableView.hidden = TRUE;
@@ -132,6 +133,11 @@ static NSString * const defaultIdentifier = @"defaultCell";
     }
     
     return 5;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 56.0f;
 }
 
 #pragma mark - table view delegate
@@ -261,9 +267,15 @@ static NSString * const defaultIdentifier = @"defaultCell";
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 56.0f;
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    cell.layer.shouldRasterize = YES;
+    cell.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    cell.layer.opacity = 0.0f;
+    
+    [UIView animateWithDuration:0.35f animations:^{
+        cell.layer.opacity = 1.0f;
+    }];
 }
 
 - (void)showFullDescription:(id)sender {
