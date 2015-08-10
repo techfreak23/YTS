@@ -66,6 +66,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     //self.tableView.hidden = TRUE;
+    self.tableView.hidden = FALSE;
 }
 
 - (void)createSectionedDetails:(NSDictionary *)fullDetails
@@ -128,6 +129,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
     if (!self.fullMovieDetails) {
         return 0;
     }
