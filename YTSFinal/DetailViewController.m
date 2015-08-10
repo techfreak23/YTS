@@ -64,7 +64,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.hidden = TRUE;
+    //self.tableView.hidden = TRUE;
 }
 
 - (void)createSectionedDetails:(NSDictionary *)fullDetails
@@ -127,6 +127,10 @@ static NSString * const defaultIdentifier = @"defaultCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (!self.fullMovieDetails) {
+        return 0;
+    }
+    
     return 5;
 }
 
@@ -182,6 +186,8 @@ static NSString * const defaultIdentifier = @"defaultCell";
             break;
             
         case 2: {
+            
+            
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier forIndexPath:indexPath];
             
             if (cell == nil) {

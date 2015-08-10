@@ -11,7 +11,7 @@
 
 @protocol UpcomingListDelegate <NSObject>
 
-- (void)finishedWithUpcomingList:(NSArray *)list;
+- (void)setCollectionDataSource:(NSArray *)dataSource;
 
 @end
 

@@ -70,7 +70,7 @@ static NSString *collectionIdentifier = @"collectionCell";
 {
     self.upcomingList = [[notification object] mutableCopy];
     [self.indicationView stopAnimating];
-    [self.delegate finishedWithUpcomingList:self.upcomingList];
+    [self.delegate setCollectionDataSource:self.upcomingList];
 }
 
 - (void)finishedWithError:(NSNotification *)notification
@@ -106,9 +106,11 @@ static NSString *collectionIdentifier = @"collectionCell";
         self.indicationView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(upcomingCell.contentView.center.x - 20.0f, upcomingCell.contentView.center.y - 20.0f, 40.0f, 40.0f)];
         self.indicationView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         [self.indicationView startAnimating];
-        upcomingCell.upcomingMovies = self.upcomingList;
+        upcomingCell.dataSource = self.upcomingList;
         self.delegate = upcomingCell;
         upcomingCell.delegate = self;
+        upcomingCell.titleKey = @"title";
+        upcomingCell.imageKey = @"medium_cover_image";
         upcomingCell.selectionStyle = UITableViewCellSelectionStyleNone;
         upcomingCell.backgroundColor = [UIColor clearColor];
         

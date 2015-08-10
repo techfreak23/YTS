@@ -61,23 +61,23 @@ static NSString *reuseIdentifier = @"movieCell";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    NSLog(@"number of items: %lu", (unsigned long)self.upcomingMovies.count);
-    return self.upcomingMovies.count;
+    NSLog(@"number of items: %lu", (unsigned long)self.dataSource.count);
+    return self.dataSource.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     MoviePosterCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
-    NSDictionary *temp = [self.upcomingMovies objectAtIndex:indexPath.item];
-    NSString *urlString = (NSString *)[temp objectForKey:@"medium_cover_image"];
+    NSDictionary *temp = [self.dataSource objectAtIndex:indexPath.item];
+    NSString *urlString = (NSString *)[temp objectForKey:self.imageKey];
     
     if (!cell) {
         cell = [[MoviePosterCollectionViewCell alloc] init];
     }
     
     cell.titleLabel.numberOfLines = 0;
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@ (%@)", [temp objectForKey:@"title"], [temp objectForKey:@"year"]];
+    cell.titleLabel.text = (NSString *)[temp objectForKey:self.titleKey];
     [cell.imageView setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageWithColor:[UIColor grayColor]]];
     
     [cell.layer setShadowPath:[UIBezierPath bezierPathWithRect:cell.bounds].CGPath];
@@ -107,9 +107,9 @@ static NSString *reuseIdentifier = @"movieCell";
     }];
 }
 
-- (void)finishedWithUpcomingList:(NSArray *)list
+- (void)setCollectionDataSource:(NSArray *)dataSource
 {
-    self.upcomingMovies = list;
+    self.dataSource = dataSource;
     
     [self.collectionView reloadData];
 }
