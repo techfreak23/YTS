@@ -42,6 +42,7 @@
 
 @property (nonatomic, strong) NSArray *sections;
 @property (nonatomic, strong) NSDictionary *fullMovieDetails;
+@property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -57,26 +58,19 @@ static NSString * const defaultIdentifier = @"defaultCell";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didFinishWithMovieDetails:) name:@"didFinishWithMovieDetails" object:nil];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
+    
+    self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0, self.view.center.y - 50.0, 40.0, 40.0)];
+    self.indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [self.view addSubview:self.indicatorView];
+    [self.indicatorView startAnimating];
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"CollectionViewTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"IVTVTableViewCell" bundle:nil] forCellReuseIdentifier:imageViewCellIdentifier];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:defaultIdentifier];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
-    
     self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"purple_background"]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    //self.tableView.hidden = TRUE;
-    self.tableView.hidden = FALSE;
-}
-
-- (void)createSectionedDetails:(NSDictionary *)fullDetails
-{
-    NSArray *temp1 = @[@{@"title": [fullDetails objectForKey:@"title_long"], @"mpa_rating": [fullDetails objectForKey:@"mpa_rating"], @"runtime": [fullDetails objectForKey:@"runtime"], @"genre": [fullDetails objectForKey:@"genres"]}, @{@"rating": [fullDetails objectForKey:@"rating"], @"language": [fullDetails objectForKey:@"language"]}];
-    NSArray *temp2 = @[@{@"actors": [fullDetails objectForKey:@"actors"]}, @{@"directors": [fullDetails objectForKey:@"directors"]}];
-    NSArray *temp3 = @[@{@"screenshots": [fullDetails objectForKey:@"images"]}];
-    
-    self.sections = [@[temp1, temp2, temp3] mutableCopy];
-    //NSLog(@"Sections: %@", self.sections);
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -103,7 +97,9 @@ static NSString * const defaultIdentifier = @"defaultCell";
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[notification object]];
     self.fullMovieDetails = temp;
     NSLog(@"Full movie details: %@", self.fullMovieDetails);
-    self.tableView.hidden = FALSE;
+    
+    [self.indicatorView stopAnimating];
+    
     [self.tableView reloadData];
 }
 

@@ -23,3 +23,11 @@
 #define kQualityKey             = @"quality"
 #define kMinimumRatingKey       = @"minimum_rating"
 
+
+// API Image Keys
+
+#define kBackgroundImageKey     = @"background_image"
+#define kLargeCoverKey          = @"large_cover_image"
+#define kLargeScreenshot1Key    = @"large_screenshot_image1"
+#define kLargeScreenshot2Key    = @"large_screenshot_image2"
+#define kLargeScreenshot3Key    = @"large_screenshot_image3"
