@@ -89,7 +89,7 @@ static NSString *reuseIdentifier = @"movieCell";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate didSelectItem:indexPath];
+    [self.delegate didSelectItem:indexPath forCell:self];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath

@@ -49,6 +49,7 @@
 static NSString * const reuseIdentifier = @"movieCell";
 static NSString * const imageViewCellIdentifier = @"imageViewCell";
 static NSString * const defaultIdentifier = @"defaultCell";
+static NSString * const collectionCellIdentifier = @"collectionCell";
 
 @implementation DetailViewController
 
@@ -60,12 +61,14 @@ static NSString * const defaultIdentifier = @"defaultCell";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"user-icon"] style:UIBarButtonItemStylePlain target:self action:@selector(showAccount)];
     
-    self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0, self.view.center.y - 50.0, 40.0, 40.0)];
-    self.indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    //self.indicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(self.view.center.x - 50.0, self.view.center.y - 50.0, 40.0, 40.0)];
+    
+    self.indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.indicatorView.frame = self.tableView.frame;
     [self.view addSubview:self.indicatorView];
     [self.indicatorView startAnimating];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"CollectionViewTableViewCell" bundle:nil] forCellReuseIdentifier:reuseIdentifier];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CollectionViewTableViewCell" bundle:nil] forCellReuseIdentifier:collectionCellIdentifier];
     [self.tableView registerNib:[UINib nibWithNibName:@"IVTVTableViewCell" bundle:nil] forCellReuseIdentifier:imageViewCellIdentifier];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:defaultIdentifier];
     
@@ -191,7 +194,12 @@ static NSString * const defaultIdentifier = @"defaultCell";
             
         case 2: {
             
+            CollectionViewTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:collectionCellIdentifier forIndexPath:indexPath];
             
+            cell.dataSource = [self.fullMovieDetails objectForKey:@"screenShots"];
+            
+            
+            /*
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:defaultIdentifier forIndexPath:indexPath];
             
             if (cell == nil) {
@@ -203,6 +211,7 @@ static NSString * const defaultIdentifier = @"defaultCell";
             cell.textLabel.font = [UIFont systemFontOfSize:16.0];
             cell.textLabel.textColor = [UIColor colorWithRed:53.0/255.0f green:203.0/255.0f blue:14.0/255.0f alpha:1.0f];
             cell.textLabel.text = @"Screenshots";
+             */
             
             return cell;
         }

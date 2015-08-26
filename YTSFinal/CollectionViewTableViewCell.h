@@ -11,7 +11,7 @@
 
 @protocol CollectionViewCellDelegate <NSObject>
 
-- (void)didSelectItem:(NSIndexPath *)indexPath;
+- (void)didSelectItem:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell;
 
 @end
 

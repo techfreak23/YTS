@@ -108,6 +108,8 @@ static NSString *collectionIdentifier = @"collectionCell";
         [self.indicationView startAnimating];
         upcomingCell.dataSource = self.upcomingList;
         self.delegate = upcomingCell;
+        
+        upcomingCell.tag = indexPath.row;
         upcomingCell.delegate = self;
         upcomingCell.titleKey = @"title";
         upcomingCell.imageKey = @"medium_cover_image";
@@ -190,8 +192,10 @@ static NSString *collectionIdentifier = @"collectionCell";
 
 #pragma mark - collection table view cell delegate method
 
-- (void)didSelectItem:(NSIndexPath *)indexPath
+- (void)didSelectItem:(NSIndexPath *)indexPath forCell:(UITableViewCell *)cell
 {
+    
+    NSLog(@"CollectionCell tag: %ld", (long)cell.tag);
     NSDictionary *temp = [NSDictionary dictionaryWithDictionary:(NSDictionary *)[self.upcomingList objectAtIndex:indexPath.item]];
     NSLog(@"From initial: %ld upcoming item: %@", (long)indexPath.row, [temp objectForKey:@"imdb_code"]);
     
